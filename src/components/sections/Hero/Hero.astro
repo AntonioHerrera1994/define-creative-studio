@@ -1,0 +1,36 @@
+---
+import './hero.css';
+import { SITE } from '../../../data/site';
+import { getLangFromUrl, useTranslations, waLink } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const id = SITE.showreelId;
+const videoSrc = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&rel=0&modestbranding=1&controls=0&playsinline=1`;
+---
+
+<section class="hero" id="inicio">
+  <div class="hero__glow" aria-hidden="true">
+    <span class="hero__glow-lime"></span>
+    <span class="hero__glow-dark"></span>
+  </div>
+
+  <div class="hero__inner container">
+    <h1 class="hero__title" set:html={t.hero.titleHtml} />
+    <p class="hero__subtitle">{t.hero.subtitle}</p>
+
+    <div class="hero__video">
+      <iframe
+        src={videoSrc}
+        title={t.hero.videoTitle}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="hero__ctas">
+      <a href={waLink(t.wa.general)} target="_blank" rel="noopener" class="btn btn--accent btn--lg hero__cta-main">{t.hero.ctaPrimary}</a>
+      <a href="#portfolio" class="btn btn--outline btn--lg">{t.hero.ctaSecondary}</a>
+    </div>
+  </div>
+</section>

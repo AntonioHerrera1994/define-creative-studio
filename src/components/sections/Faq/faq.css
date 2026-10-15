@@ -1,0 +1,56 @@
+/* ═══ FAQ ═══ */
+.faq__inner {
+  position: relative;
+  background-image: var(--texture);
+  background-repeat: no-repeat;
+  background-size: 24% auto;
+}
+.faq__content { position: relative; z-index: 1; max-width: 48rem; }
+.faq__title { margin-bottom: 1.5rem; }
+.faq__list { display: grid; gap: 1.5rem; }
+
+.faq__item {
+  background: var(--c-white);
+  border: 2px solid var(--c-surface-line);
+  border-radius: var(--r-lg);
+  transition: border-color 0.3s ease;
+}
+.faq__item[open] { border-color: var(--c-primary); }
+.faq__item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  list-style: none;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__q { font-family: var(--f-display); font-size: 1.125rem; font-weight: var(--fw-medium); }
+.faq__icon {
+  flex-shrink: 0;
+  padding: 0.5rem;
+  border-radius: var(--r-full);
+  background: var(--c-surface-line);
+  transition: transform 0.3s ease;
+}
+.faq__item[open] .faq__icon { transform: rotate(180deg); }
+.faq__a { padding: 0 2rem 2rem; font-size: var(--fs-lead); color: var(--c-text-muted); }
+
+/* Carita girando */
+.faq__happy {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 3.5rem;
+  width: 5rem;
+  pointer-events: none;
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15));
+  animation: faqSpin 6s linear infinite;
+}
+@keyframes faqSpin { to { transform: rotate(360deg); } }
+
+@media (min-width: 768px) {
+  .faq__happy { display: block; }
+  .faq__q { font-size: 1.25rem; }
+}

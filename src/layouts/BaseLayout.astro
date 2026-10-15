@@ -1,0 +1,57 @@
+---
+// ═══════════════════════════════════════════════
+// Layout base: <head>, fuentes, CSS global, Navbar, Footer
+// Todas las props van directo al componente SEO.
+// ═══════════════════════════════════════════════
+import '../styles/global.css';
+import SEO from '../components/seo/SEO.astro';
+import Navbar from '../components/layout/Navbar/Navbar.astro';
+import Footer from '../components/layout/Footer/Footer.astro';
+import { SITE } from '../data/site';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+type Props = import('astro/types').ComponentProps<typeof SEO> & {
+  /** Destino del switch ES/EN cuando la página no tiene traducción */
+  alternateHref?: string;
+};
+
+const { alternateHref, ...seoProps } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<!doctype html>
+<html lang={t.meta.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <SEO {...seoProps} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href={SITE.logoWhite} />
+    <link rel="apple-touch-icon" href={SITE.logo} />
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&family=Plus+Jakarta+Sans:wght@200..800&family=Source+Sans+3:wght@400;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block"
+    />
+    <!-- Adobe Fonts (Billstone Signature) -->
+    <link rel="stylesheet" href="https://use.typekit.net/cgr3ppi.css" />
+  </head>
+  <body>
+    <Navbar alternateHref={alternateHref} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

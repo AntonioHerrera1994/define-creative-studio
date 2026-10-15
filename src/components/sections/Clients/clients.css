@@ -1,0 +1,38 @@
+/* ═══ CLIENTES (marquee de logos) ═══ */
+.clients { overflow: hidden; }
+.clients .section-head { margin-bottom: 3rem; }
+
+.clients__wrapper {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+.clients__wrapper + .clients__wrapper { margin-top: 1.5rem; }
+
+.clients__track {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: max-content;
+  padding-inline: 2rem;
+}
+.clients__track:hover { animation-play-state: paused; }
+.clients__track--ltr { animation: clientsLtr 40s linear infinite; }
+.clients__track--rtl { animation: clientsRtl 40s linear infinite; }
+
+.clients__track img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.clients__track img:hover { filter: grayscale(0%); opacity: 1; }
+
+@keyframes clientsLtr { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes clientsRtl { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+@media (min-width: 768px) {
+  .clients__track img { height: 110px; }
+}

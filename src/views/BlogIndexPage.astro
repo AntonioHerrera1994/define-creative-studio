@@ -1,0 +1,76 @@
+---
+// Página general del blog: /blog/ y /en/blog/
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCard from '../components/blog/BlogCard/BlogCard.astro';
+import BlogCta from '../components/blog/BlogCta/BlogCta.astro';
+import '../components/blog/blog-index.css';
+import { getPosts, postSlug } from '../lib/blog';
+import { breadcrumbSchema } from '../components/seo/schema';
+import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
+import { SITE } from '../data/site';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const b = t.blog;
+const posts = await getPosts(lang);
+
+const blogUrl = new URL(Astro.url.pathname, SITE.url).href;
+const schema = [
+  {
+    '@type': 'Blog',
+    '@id': blogUrl,
+    name: b.schemaName,
+    description: b.metaDescription,
+    url: blogUrl,
+    inLanguage: lang === 'es' ? 'es-MX' : 'en-US',
+    publisher: { '@id': `${SITE.url}/#business` },
+    blogPost: posts.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.data.title,
+      url: new URL(localizePath(`/blog/${postSlug(p)}/`, lang), SITE.url).href,
+      datePublished: p.data.date.toISOString(),
+      description: p.data.description,
+      image: p.data.image,
+      author: { '@type': 'Organization', name: p.data.author },
+    })),
+  },
+  breadcrumbSchema([
+    { name: SITE.shortName, url: new URL(localizePath('/', lang), SITE.url).href },
+    { name: b.title, url: blogUrl },
+  ]),
+];
+---
+
+<BaseLayout title={b.metaTitle} description={b.metaDescription} keywords={b.keywords} schema={schema}>
+  <!-- Hero -->
+  <section class="blog-index-hero">
+    <div class="container">
+      <div class="blog-index-hero__inner">
+        <p class="blog-index-hero__kicker anim-up">{b.kicker}</p>
+        <h1 class="blog-index-hero__title anim-up anim-d1" set:html={b.titleHtml} />
+        <p class="blog-index-hero__intro anim-up anim-d2">{b.intro}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid de artículos (más reciente primero) -->
+  <section class="blog-index-grid">
+    <div class="container">
+      {posts.length
+        ? <div class="blog-grid">{posts.map((post, i) => <BlogCard post={post} isNew={i === 0} />)}</div>
+        : <p class="blog-index-grid__empty">{b.empty}</p>}
+    </div>
+  </section>
+
+  <BlogCta
+    kicker={b.cta.kicker}
+    titleHtml={b.cta.titleHtml}
+    text={b.cta.text}
+    primary={{ label: b.cta.primary, wa: b.cta.wa }}
+    secondary={{ label: b.cta.secondary, href: localizePath('/', lang) }}
+  />
+</BaseLayout>
+
+<script>
+  import '../scripts/reveal.js';
+</script>

@@ -1,0 +1,31 @@
+---
+import './projects.css';
+import { projectMedia } from '../../../data/projects';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="projects section section--dark" id="proyectos">
+  <div class="container container--narrow">
+    <header class="section-head">
+      <span class="kicker projects__kicker">{t.projects.kicker}</span>
+      <h2 class="projects__title" set:html={t.projects.titleHtml} />
+      <p class="projects__sub">{t.projects.subtitle}</p>
+    </header>
+
+    <div class="projects__grid">
+      {t.projects.items.map((p, i) => (
+        <a class="projects__card" href={projectMedia[i]?.href} target="_blank" rel="noopener">
+          <img src={projectMedia[i]?.image} alt={p.title} loading="lazy" width="600" height="750" />
+          <div class="projects__overlay">
+            <span class="projects__tag">{p.tag}</span>
+            <h3 class="projects__name">{p.title}</h3>
+            <p class="projects__text">{p.text}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

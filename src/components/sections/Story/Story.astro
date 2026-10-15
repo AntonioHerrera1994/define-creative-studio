@@ -1,0 +1,34 @@
+---
+import './story.css';
+import { SITE } from '../../../data/site';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="story section section--dark" id="historia">
+  <div class="story__grid container container--narrow">
+    <div>
+      <span class="kicker story__kicker">{t.story.kicker}</span>
+      <h2 class="story__title" set:html={t.story.titleHtml} />
+      <p class="story__lead">{t.story.lead}</p>
+      <p class="story__tagline">{t.story.tagline}</p>
+
+      <ul class="story__points">
+        {t.story.points.map((p) => (
+          <li>
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            <span set:html={p} />
+          </li>
+        ))}
+      </ul>
+
+      <p class="story__closing" set:html={t.story.closingHtml} />
+    </div>
+
+    <div class="story__media">
+      <img src={SITE.storyImage} alt={t.story.imageAlt} loading="lazy" width="900" height="1100" />
+    </div>
+  </div>
+</section>

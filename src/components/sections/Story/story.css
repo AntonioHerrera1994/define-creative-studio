@@ -1,0 +1,34 @@
+/* ═══ HISTORIA ═══ */
+.story__grid { display: grid; gap: 4rem; align-items: center; }
+.story__kicker { color: var(--c-white); }
+.story__title {
+  font-size: var(--fs-h2-dark);
+  font-weight: var(--fw-heavy);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 1rem 0 1.5rem;
+}
+.story__lead {
+  font-family: var(--f-display);
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-medium);
+  margin-bottom: 0.75rem;
+}
+.story__tagline { font-style: italic; color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem; }
+
+.story__points { display: grid; gap: 0.75rem; margin-bottom: 2.5rem; }
+.story__points li { display: flex; align-items: flex-start; gap: 0.75rem; font-family: var(--f-body); }
+.story__points .material-symbols-outlined { font-size: 1.25rem; color: var(--c-lime); margin-top: 0.15rem; }
+
+.story__closing { line-height: 1.7; }
+
+.story__media {
+  min-height: 420px;
+  height: 100%;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
+.story__media img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; }
+
+@media (min-width: 1024px) { .story__grid { grid-template-columns: 1fr 1fr; } }

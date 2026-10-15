@@ -1,0 +1,66 @@
+---
+import './navbar.css';
+import { SITE } from '../../../data/site';
+import { getLangFromUrl, useTranslations, localizePath, getAlternatePath, waLink } from '../../../i18n/utils';
+
+interface Props { alternateHref?: string }
+const { alternateHref } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const home = localizePath('/', lang);
+const otherLang = lang === 'es' ? 'en' : 'es';
+
+// Las anclas apuntan al home para que funcionen también desde el blog
+const links = [
+  { href: `${home}#services`, label: t.nav.services },
+  { href: `${home}#proceso`, label: t.nav.process },
+  { href: `${home}#portfolio`, label: t.nav.portfolio },
+  { href: `${home}#pricing`, label: t.nav.pricing },
+  { href: localizePath('/blog/', lang), label: t.nav.blog },
+  { href: SITE.ikariUrl, label: t.nav.ikari, external: true },
+];
+---
+
+<nav class="navbar" aria-label="Principal">
+  <div class="navbar__inner container">
+    <a class="navbar__logo" href={home}>
+      <img src={SITE.logo} alt={SITE.name} width="170" height="48" />
+    </a>
+
+    <ul class="navbar__links">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} {...(l.external && { target: '_blank', rel: 'noopener' })}>{l.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="navbar__actions">
+      <a class="navbar__lang" href={alternateHref ?? getAlternatePath(Astro.url, otherLang)} hreflang={otherLang} title={t.nav.switchLabel} aria-label={t.nav.switchLabel}>
+        <span aria-hidden="true">{t.nav.switchFlag}</span> <span>{t.nav.switchShort}</span>
+      </a>
+      <a class="btn btn--accent btn--sm navbar__cta" href={waLink(t.wa.general)} target="_blank" rel="noopener">{t.nav.contact}</a>
+
+      <button class="navbar__burger" id="hamburger-btn" aria-label={t.nav.openMenu} aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <div class="navbar__mobile" id="mobile-menu" hidden>
+    <ul class="container">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} {...(l.external && { target: '_blank', rel: 'noopener' })}>{l.label}</a>
+        </li>
+      ))}
+      <li><a href={waLink(t.wa.general)} target="_blank" rel="noopener">{t.nav.contact}</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  import './navbar.js';
+</script>

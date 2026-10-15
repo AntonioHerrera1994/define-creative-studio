@@ -1,0 +1,35 @@
+---
+import './blog-card.css';
+import { type Post, postSlug, formatDate } from '../../../lib/blog';
+import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
+
+interface Props { post: Post; isNew?: boolean }
+const { post, isNew = false } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { title, description, excerpt, image, imageAlt, category, categoryStyle, readingTime, date } = post.data;
+const href = localizePath(`/blog/${postSlug(post)}/`, lang);
+---
+
+<a class="blog-card" href={href} data-reveal>
+  <div class="blog-card__media">
+    <img src={image} alt={imageAlt ?? title} loading="lazy" width="800" height="450" />
+    <span class="blog-card__shade" aria-hidden="true"></span>
+    <span class={`chip-cat chip-cat--${categoryStyle} blog-card__tag`}>{category}</span>
+    {isNew && <span class="blog-card__new">{t.blog.newBadge}</span>}
+  </div>
+
+  <div class="blog-card__body">
+    <div class="blog-card__meta">
+      <span class="blog-card__avatar" aria-hidden="true">D</span>
+      <time datetime={date.toISOString()}>{formatDate(date, lang)}</time>
+      <span class="blog-card__time">{readingTime} {t.blogPreview.minutes}</span>
+    </div>
+    <h3 class="blog-card__title">{title}</h3>
+    <p class="blog-card__excerpt">{excerpt ?? description}</p>
+    <span class="blog-card__more">
+      {t.blogPreview.readMore}
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+    </span>
+  </div>
+</a>

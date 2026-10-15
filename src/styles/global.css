@@ -1,0 +1,241 @@
+/* ── 1. Tokens ───────────────────────────────── */
+:root {
+  /* Marca */
+  --c-primary: #003c49;        /* azul petróleo */
+  --c-primary-dark: #002a33;
+  --c-lime: #d4dd67;           /* acento */
+  --c-lime-hover: #c5d14e;
+  --c-lavender: #b3a3e1;       /* acento de títulos */
+  --c-pink: #d2badb;
+  --c-dark: #2b2b2b;           /* círculo del paso 02 */
+  --c-whatsapp: #25d366;
+
+  /* Neutros */
+  --c-white: #ffffff;
+  --c-surface: #f9f9fa;
+  --c-surface-low: #f3f3f4;
+  --c-surface-line: #edeeef;
+  --c-text: #003c49;
+  --c-text-muted: #40484b;
+  --c-text-soft: #71787b;
+
+  /* Tipografía */
+  --f-display: 'Sora', system-ui, sans-serif;
+  --f-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --f-text: 'Source Sans 3', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Grosores — sube o baja estos 3 valores para todo el sitio */
+  --fw-heavy: 400;   /* títulos grandes, precios, cifras (antes 800) */
+  --fw-bold: 600;    /* subtítulos, botones, etiquetas (antes 700) */
+  --fw-medium: 500;  /* h3, nombres, textos destacados (antes 600) */
+
+  /* Escala */
+  --fs-display: clamp(2.75rem, 6vw, 4.0625rem); /* 44 → 65px */
+  --fs-h2: clamp(2.25rem, 4.5vw, 3rem);         /* 36 → 48px */
+  --fs-h2-dark: clamp(2.5rem, 4.5vw, 3.25rem);  /* 40 → 52px */
+  --fs-h3: 1.5rem;
+  --fs-lead: 1.125rem;
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
+
+  /* Espaciado / layout */
+  --max-w: 1440px;
+  --gutter: 20px;
+  --section-y: 6rem;
+  --nav-h: 80px;
+
+  /* Radios y sombras */
+  --r-sm: 1rem;
+  --r-md: 1.5rem;
+  --r-lg: 2rem;
+  --r-xl: 3rem;
+  --r-full: 9999px;
+  --shadow-soft: 0 10px 40px -10px rgba(0, 60, 73, 0.08);
+  --shadow-soft-hover: 0 20px 50px -10px rgba(0, 60, 73, 0.14);
+  --shadow-strong: 0 30px 80px -20px rgba(0, 60, 73, 0.18);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 64px; }
+}
+
+/* ── 2. Reset ligero ─────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--f-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--c-text);
+  background: var(--c-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img, video, iframe, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+ul, ol { list-style: none; padding: 0; }
+p { font-family: var(--f-text); }
+h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.15; letter-spacing: -0.02em; }
+strong { font-weight: var(--fw-bold); }
+:focus-visible { outline: 3px solid var(--c-lime); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* ── 3. Layout ───────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--narrow { max-width: 72rem; }  /* ≈ max-w-6xl */
+.section { padding-block: var(--section-y); }
+.section--dark { background: var(--c-primary); color: var(--c-white); }
+.section--muted { background: var(--c-surface-low); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* ── 4. Encabezados de sección ───────────────── */
+.section-head { text-align: center; margin-bottom: 4rem; }
+.section-head__eyebrow {           /* el texto grande tipo "Nuestros Servicios" */
+  display: block;
+  font-family: var(--f-display);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-heavy);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+}
+.section-head__title {             /* el h2 debajo */
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: var(--fw-bold);
+}
+.section-head__sub {
+  max-width: 42rem;
+  margin: 1rem auto 0;
+  font-size: var(--fs-lead);
+  color: var(--c-text-muted);
+}
+.section-title {                   /* h2 grande usado solo, sin eyebrow */
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-heavy);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.kicker {
+  display: inline-block;
+  font-family: var(--f-display);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-text-soft);
+}
+
+/* Colores de acento dentro de títulos (los usa el HTML de i18n) */
+.text-accent { color: var(--c-lavender); }
+.text-lime { color: var(--c-lime); }
+.text-muted { color: rgba(0, 0, 0, 0.55); }
+
+/* ── 5. Botones ──────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  border-radius: var(--r-full);
+  font-family: var(--f-display);
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.btn--lg { font-size: 1.25rem; }
+.btn--sm { font-size: var(--fs-sm); padding: 0.75rem 1.75rem; }
+
+.btn--accent { background: var(--c-lime); color: var(--c-primary); }
+.btn--accent:hover { background: var(--c-lime-hover); transform: scale(1.03); }
+
+.btn--outline { border: 2px solid var(--c-primary); color: var(--c-primary); }
+.btn--outline:hover { background: var(--c-primary); color: var(--c-white); }
+
+.btn--ghost-light { border: 2px solid rgba(255, 255, 255, 0.3); color: var(--c-white); }
+.btn--ghost-light:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* ── 6. Tarjeta suave ────────────────────────── */
+.soft-card {
+  background: var(--c-white);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.soft-card--hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft-hover);
+}
+
+/* ── 7. Caja de icono (servicios, pricing, cotizador) ── */
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--r-sm);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.icon-box--sm { width: 2.25rem; height: 2.25rem; border-radius: 0.75rem; }
+.icon-box--md { width: 3rem; height: 3rem; border-radius: 0.75rem; }
+.icon-box--blue { background: rgba(0, 0, 0, 0.05); color: var(--c-primary); }
+.icon-box--lime { background: rgba(212, 221, 103, 0.2); color: var(--c-primary); }
+.icon-box--lavender { background: rgba(179, 163, 225, 0.12); color: var(--c-lavender); }
+
+/* ── 8. Material Symbols ─────────────────────── */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  user-select: none;
+}
+
+/* ── 9. Lista con check (pricing, cotizador) ── */
+.check-list { display: grid; gap: 0.5rem; }
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+.check-list .material-symbols-outlined { font-size: 1.125rem; color: var(--c-primary); flex-shrink: 0; margin-top: 0.1rem; }
+
+/* ── 10. Animación de entrada (hero del listado y del artículo) */
+@keyframes animUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.anim-up { animation: animUp 0.6s ease both; }
+.anim-d1 { animation-delay: 0.1s; }
+.anim-d2 { animation-delay: 0.22s; }
+.anim-d3 { animation-delay: 0.34s; }
+.anim-d4 { animation-delay: 0.46s; }

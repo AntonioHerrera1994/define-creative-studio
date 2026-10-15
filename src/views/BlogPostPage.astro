@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPost from '../components/blog/BlogPost/BlogPost.astro';
+import { render } from 'astro:content';
+import type { Post } from '../lib/blog';
+import { blogPostingSchema, breadcrumbSchema, faqSchema } from '../components/seo/schema';
+import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
+import { SITE } from '../data/site';
+
+interface Props { post: Post; hasTranslation: boolean }
+const { post, hasTranslation } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { Content } = await render(post);
+const d = post.data;
+const url = new URL(Astro.url.pathname, SITE.url).href;
+
+const schema = [
+  blogPostingSchema({
+    title: d.title,
+    description: d.description,
+    url,
+    image: d.image,
+    datePublished: d.date,
+    dateModified: d.updated,
+    author: d.author,
+    lang,
+    keywords: d.keywords,
+    section: d.section ?? d.category,
+    readingTime: d.readingTime,
+  }),
+  breadcrumbSchema([
+    { name: SITE.shortName, url: new URL(localizePath('/', lang), SITE.url).href },
+    { name: t.blog.title, url: new URL(localizePath('/blog/', lang), SITE.url).href },
+    { name: d.title, url },
+  ]),
+  ...(d.faq.length ? [faqSchema(d.faq)] : []),
+];
+---
+
+<BaseLayout
+  title={d.metaTitle ?? `${d.title} | ${SITE.name}`}
+  description={d.description}
+  keywords={d.keywords.join(', ') || undefined}
+  image={d.image}
+  imageAlt={d.imageAlt ?? d.title}
+  type="article"
+  publishedTime={d.date}
+  modifiedTime={d.updated}
+  hasAlternate={hasTranslation}
+  alternateHref={hasTranslation ? undefined : localizePath('/blog/', lang === 'es' ? 'en' : 'es')}
+  schema={schema}
+>
+  <BlogPost post={post}>
+    <Content />
+  </BlogPost>
+</BaseLayout>

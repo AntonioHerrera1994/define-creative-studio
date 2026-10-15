@@ -1,0 +1,27 @@
+---
+import './process.css';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="process section section--muted" id="proceso">
+  <div class="container">
+    <header class="section-head">
+      <span class="section-head__eyebrow" set:html={t.process.eyebrowHtml} />
+      <h2 class="section-head__title" set:html={t.process.titleHtml} />
+      <p class="section-head__sub">{t.process.subtitle}</p>
+    </header>
+
+    <ol class="process__grid">
+      {t.process.steps.map((s) => (
+        <li class="process__step soft-card soft-card--hover">
+          <span class={`process__num process__num--${s.tone}`}>{s.n}</span>
+          <h3 class="process__title">{s.title}</h3>
+          <p class="process__text">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

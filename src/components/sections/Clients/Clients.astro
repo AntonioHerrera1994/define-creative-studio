@@ -1,0 +1,36 @@
+---
+import './clients.css';
+import { clientsRow1, clientsRow2 } from '../../../data/clients';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// La fila se renderiza 2 veces seguidas; la animación mueve -50% y el loop es invisible.
+const rows = [
+  { logos: clientsRow1, dir: 'ltr' },
+  { logos: clientsRow2, dir: 'rtl' },
+];
+---
+
+<section class="clients section" id="clientes">
+  <header class="section-head">
+    <h2 class="section-title" set:html={t.clients.titleHtml} />
+  </header>
+
+  {rows.map((row) => (
+    <div class="clients__wrapper">
+      <div class={`clients__track clients__track--${row.dir}`}>
+        {[...row.logos, ...row.logos].map((src, i) => (
+          <img
+            src={src}
+            alt={i < row.logos.length ? t.clients.logoAlt : ''}
+            aria-hidden={i >= row.logos.length ? 'true' : undefined}
+            loading="lazy"
+            height="110"
+          />
+        ))}
+      </div>
+    </div>
+  ))}
+</section>

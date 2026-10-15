@@ -1,0 +1,22 @@
+/* ═══ SERVICIOS ═══ */
+.services {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  background-image: var(--texture);
+  background-repeat: no-repeat;
+  background-size: 24% auto;
+}
+.services__grid { display: grid; gap: 2rem; }
+.services__card { padding: 2.5rem; }
+.services__card .icon-box { margin-bottom: 2rem; }
+.services__card .icon-box .material-symbols-outlined { font-size: 1.875rem; }
+.services__title { font-size: var(--fs-h3); font-weight: var(--fw-medium); margin-bottom: 1rem; }
+.services__text { color: var(--c-text-muted); text-align: justify; hyphens: auto; }
+
+/* Hover: la caja del icono se rellena con el color del tono */
+.services__card--blue:hover .icon-box { background: var(--c-primary); color: var(--c-white); }
+.services__card--lime:hover .icon-box { background: var(--c-lime); }
+.services__card--lavender:hover .icon-box { background: var(--c-lavender); color: var(--c-white); }
+
+@media (min-width: 768px) { .services__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .services__grid { grid-template-columns: repeat(3, 1fr); } }

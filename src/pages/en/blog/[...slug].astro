@@ -1,0 +1,15 @@
+---
+// Articles in English → /en/blog/<slug>/
+import BlogPostPage from '../../../views/BlogPostPage.astro';
+import { getPosts, postSlug } from '../../../lib/blog';
+
+export async function getStaticPaths() {
+  const en = await getPosts('en');
+  const esSlugs = new Set((await getPosts('es')).map(postSlug));
+  return en.map((post) => ({
+    params: { slug: postSlug(post) },
+    props: { post, hasTranslation: esSlugs.has(postSlug(post)) },
+  }));
+}
+---
+<BlogPostPage {...Astro.props} />

@@ -1,0 +1,29 @@
+---
+import './services.css';
+import { TEXTURES } from '../../../data/site';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="services section" id="services" style={`--texture: url('${TEXTURES.t1}')`}>
+  <div class="container">
+    <header class="section-head">
+      <span class="section-head__eyebrow" set:html={t.services.eyebrowHtml} />
+  
+    </header>
+
+    <div class="services__grid">
+      {t.services.items.map((s) => (
+        <article class={`services__card soft-card soft-card--hover services__card--${s.tone}`}>
+          <div class={`icon-box icon-box--${s.tone}`}>
+            <span class="material-symbols-outlined" aria-hidden="true">{s.icon}</span>
+          </div>
+          <h3 class="services__title">{s.title}</h3>
+          <p class="services__text">{s.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

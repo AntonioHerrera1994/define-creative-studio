@@ -1,0 +1,120 @@
+---
+// Plantilla de cada artículo. El contenido del .md entra por <slot />.
+import './blog-post.css';
+import '../BlogCard/blog-card.css';
+import BlogCta from '../BlogCta/BlogCta.astro';
+import { type Post, formatDate } from '../../../lib/blog';
+import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
+
+interface Props { post: Post }
+const { post } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const d = post.data;
+const home = localizePath('/', lang);
+
+// CTA: el del artículo, o el general del blog
+const cta = d.cta ?? {
+  kicker: t.blog.cta.kicker,
+  titleHtml: t.blog.cta.titleHtml,
+  text: t.blog.cta.text,
+  primary: { label: t.blog.cta.primary, wa: t.blog.cta.wa, style: 'accent' as const },
+  secondary: { label: t.blog.cta.secondary, href: home },
+};
+---
+
+<div class="reading-bar" data-reading-bar aria-hidden="true"></div>
+
+<article class="post">
+  <!-- ══ HERO ══ -->
+  <header class="post-hero">
+    <div class="post-hero__inner">
+      <nav class="post-hero__crumbs anim-up" aria-label="Breadcrumb">
+        <a class="post-chip post-chip--ghost" href={home}>
+          <span class="material-symbols-outlined" aria-hidden="true">home</span>{t.blog.homeCrumb}
+        </a>
+        <span aria-hidden="true">›</span>
+        <a class="post-chip post-chip--lime" href={localizePath('/blog/', lang)}>{t.blog.title}</a>
+        <span aria-hidden="true">›</span>
+        <span class="post-chip post-chip--soft">{d.section ?? d.category}</span>
+      </nav>
+
+      <div class="post-hero__grid">
+        <div>
+          {d.hero.badges.length > 0 && (
+            <div class="post-hero__badges anim-up anim-d1">
+              {d.hero.badges.includes('facebook') && (
+                <span class="post-badge post-badge--fb">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
+                </span>
+              )}
+              {d.hero.badges.includes('instagram') && (
+                <span class="post-badge post-badge--ig">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  Instagram
+                </span>
+              )}
+            </div>
+          )}
+          <p class="post-hero__kicker anim-up anim-d1">{d.hero.kicker}</p>
+          <h1 class="post-hero__title anim-up anim-d2" set:html={d.hero.titleHtml} />
+          <p class="post-hero__intro anim-up anim-d3">{d.hero.intro}</p>
+          <div class="post-hero__author anim-up anim-d4">
+            <span class="post-avatar post-avatar--lime" aria-hidden="true">D</span>
+            <div>
+              <p class="post-hero__author-name">{d.author}</p>
+              <p class="post-hero__author-meta">
+                <time datetime={d.date.toISOString()}>{formatDate(d.date, lang)}</time> · {d.readingTime} {t.blog.readingTime}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="post-hero__media anim-up anim-d3" style={`aspect-ratio:${d.hero.imageAspect}`}>
+          <img src={d.image} alt={d.imageAlt ?? d.title} width="1200" height="900" fetchpriority="high" />
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ CONTENIDO (Markdown) ══ -->
+  <div class="post-body">
+    <slot />
+
+    <!-- Autor -->
+    <div class="band band--auto">
+      <div class="post-divider" aria-hidden="true"></div>
+      <div class="post-author">
+        <span class="post-avatar" aria-hidden="true">D</span>
+        <div>
+          <p class="post-author__name">{d.author}</p>
+          {d.authorTag && <p class="post-author__tag">{d.authorTag}</p>}
+        </div>
+      </div>
+    </div>
+
+    <!-- Preguntas frecuentes (mismas que el schema FAQPage) -->
+    {d.faq.length > 0 && (
+      <div class="band band--muted post-faq">
+        <h2>{t.blog.faqTitle}</h2>
+        {d.faq.map((item) => (
+          <details class="post-faq__item">
+            <summary>
+              <span>{item.q}</span>
+              <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+            </summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    )}
+  </div>
+</article>
+
+<BlogCta {...cta} />
+
+<script>
+  import './reading-bar.js';
+  import '../../../scripts/reveal.js';
+</script>

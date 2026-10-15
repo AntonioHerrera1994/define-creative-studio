@@ -1,0 +1,44 @@
+---
+// El home completo. Lo usan pages/index.astro (ES) y pages/en/index.astro (EN).
+// Para reordenar o quitar secciones, hazlo aquí.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero/Hero.astro';
+import Services from '../components/sections/Services/Services.astro';
+import Story from '../components/sections/Story/Story.astro';
+import Portfolio from '../components/sections/Portfolio/Portfolio.astro';
+import Process from '../components/sections/Process/Process.astro';
+import Clients from '../components/sections/Clients/Clients.astro';
+import Projects from '../components/sections/Projects/Projects.astro';
+import Pricing from '../components/sections/Pricing/Pricing.astro';
+import Faq from '../components/sections/Faq/Faq.astro';
+import Quoter from '../components/sections/Quoter/Quoter.astro';
+import BlogPreview from '../components/sections/BlogPreview/BlogPreview.astro';
+import CtaFinal from '../components/sections/CtaFinal/CtaFinal.astro';
+import { localBusinessSchema, websiteSchema, faqSchema } from '../components/seo/schema';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const schema = [localBusinessSchema(t), websiteSchema(t, lang), faqSchema(t.faq.items)];
+---
+
+<BaseLayout
+  title={t.meta.title}
+  description={t.meta.description}
+  keywords={t.meta.keywords}
+  schema={schema}
+>
+  <Hero />
+  <Services />
+  <Story />
+  <Portfolio />
+  <Process />
+  <Clients />
+  <Projects />
+  <Pricing />
+  <Faq />
+  <Quoter />
+  <BlogPreview />
+  <CtaFinal />
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import './blog-preview.css';
+import BlogCard from '../../blog/BlogCard/BlogCard.astro';
+import { getPosts } from '../../../lib/blog';
+import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const posts = await getPosts(lang, 3); // los 3 más recientes del idioma actual
+---
+
+{posts.length > 0 && (
+  <section class="blog-preview section section--muted" id="blog">
+    <div class="container">
+      <header class="section-head">
+        <span class="section-head__eyebrow" set:html={t.blogPreview.titleHtml} />
+        <p class="section-head__sub">{t.blogPreview.subtitle}</p>
+      </header>
+
+      <div class="blog-grid">
+        {posts.map((post) => <BlogCard post={post} />)}
+      </div>
+
+      <div class="blog-preview__all">
+        <a class="btn btn--outline" href={localizePath('/blog/', lang)}>{t.blogPreview.viewAll}</a>
+      </div>
+    </div>
+  </section>
+)}

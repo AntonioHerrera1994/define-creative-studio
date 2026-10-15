@@ -1,0 +1,38 @@
+/* ═══ CTA FINAL ═══ */
+.cta-final__box {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1.5rem;
+  border-radius: var(--r-xl);
+  background: var(--c-primary);
+  color: var(--c-white);
+  text-align: center;
+}
+.cta-final__glow { position: absolute; width: 20rem; height: 20rem; border-radius: 50%; filter: blur(80px); }
+.cta-final__glow--a { top: -5rem; left: -5rem; background: rgba(179, 163, 225, 0.3); }
+.cta-final__glow--b { bottom: -5rem; right: -5rem; background: rgba(212, 221, 103, 0.2); }
+.cta-final__content { position: relative; }
+
+.cta-final__kicker {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-family: 'billstone-signature', var(--f-display);
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-lime);
+}
+.cta-final__title {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: var(--fw-heavy);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
+.cta-final__sub { max-width: 36rem; margin: 0 auto 3rem; font-size: var(--fs-lead); color: rgba(255, 255, 255, 0.7); }
+.cta-final__actions { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
+.cta-final__main { padding: 1.25rem 3rem; box-shadow: 0 25px 50px -12px rgba(212, 221, 103, 0.3); }
+
+@media (min-width: 640px) { .cta-final__actions { flex-direction: row; } }
+@media (min-width: 768px) { .cta-final__box { padding: 4rem; } }

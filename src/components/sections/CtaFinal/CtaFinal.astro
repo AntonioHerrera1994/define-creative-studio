@@ -1,0 +1,26 @@
+---
+import './cta-final.css';
+import { getLangFromUrl, useTranslations, waLink } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="cta-final section" id="contacto">
+  <div class="container">
+    <div class="cta-final__box">
+      <span class="cta-final__glow cta-final__glow--a" aria-hidden="true"></span>
+      <span class="cta-final__glow cta-final__glow--b" aria-hidden="true"></span>
+
+      <div class="cta-final__content">
+        <span class="cta-final__kicker">{t.cta.kicker}</span>
+        <h2 class="cta-final__title" set:html={t.cta.titleHtml} />
+        <p class="cta-final__sub">{t.cta.subtitle}</p>
+        <div class="cta-final__actions">
+          <a href={waLink(t.wa.general)} target="_blank" rel="noopener" class="btn btn--accent btn--lg cta-final__main">{t.cta.primary}</a>
+          <a href="#portfolio" class="btn btn--ghost-light btn--lg">{t.cta.secondary}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

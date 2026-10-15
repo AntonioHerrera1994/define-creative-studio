@@ -1,0 +1,31 @@
+---
+import './faq.css';
+import { TEXTURES } from '../../../data/site';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="faq section" id="faq" style={`--texture: url('${TEXTURES.t1}')`}>
+  <div class="faq__inner container container--narrow">
+    <img class="faq__happy" src={TEXTURES.happy} alt="" aria-hidden="true" loading="lazy" width="96" height="96" />
+
+    <div class="faq__content">
+      <h2 class="section-title faq__title" set:html={t.faq.titleHtml} />
+
+      <!-- <details> nativo: abre/cierra sin JS y es accesible -->
+      <div class="faq__list">
+        {t.faq.items.map((item) => (
+          <details class="faq__item">
+            <summary>
+              <span class="faq__q">{item.q}</span>
+              <span class="material-symbols-outlined faq__icon" aria-hidden="true">expand_more</span>
+            </summary>
+            <div class="faq__a">{item.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,106 @@
+---
+import './portfolio.css';
+import { portfolio, type PortfolioCategory } from '../../../data/portfolio';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const categories = Object.entries(t.portfolio.categories) as [PortfolioCategory, string][];
+const defaultFilter: PortfolioCategory = 'branding';
+
+const titleFor = (title: string | undefined, cat: PortfolioCategory) =>
+  title ?? (cat === 'fotografia' ? t.portfolio.photoSession : t.portfolio.categories[cat]);
+---
+
+<section class="portfolio section" id="portfolio" data-default-filter={defaultFilter}>
+  <div class="container">
+    <header class="portfolio__head">
+      <div>
+        <h2 class="section-title" set:html={t.portfolio.titleHtml} />
+        <p class="portfolio__sub">{t.portfolio.subtitle}</p>
+      </div>
+
+      <div class="portfolio__filters" role="tablist">
+        {categories.map(([key, label]) => (
+          <button
+            type="button"
+            role="tab"
+            class:list={['portfolio__filter', { 'is-active': key === defaultFilter }]}
+            aria-selected={key === defaultFilter ? 'true' : 'false'}
+            data-filter={key}
+          >{label}</button>
+        ))}
+      </div>
+    </header>
+
+    <div class="portfolio__viewport">
+      <div class="portfolio__track" data-portfolio-track>
+        {portfolio.map((item) => {
+          const title = titleFor(item.title, item.category);
+          const label = t.portfolio.categories[item.category];
+          const overlay = (
+            <div class="portfolio__overlay">
+              <span class="portfolio__label">{label}</span>
+              <h3 class="portfolio__name">{title}</h3>
+              {item.href && (
+                <span class="portfolio__visit">
+                  <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span> {t.portfolio.viewSite}
+                </span>
+              )}
+            </div>
+          );
+          const img = <img src={item.thumb} alt={title} loading="lazy" width="400" height="500" />;
+
+          // 1) Link externo
+          if (item.href) {
+            return (
+              <a class="portfolio__item" data-category={item.category} href={item.href} target="_blank" rel="noopener">
+                {img}{overlay}
+              </a>
+            );
+          }
+          // 2) Abre modal
+          if (item.full) {
+            return (
+              <button type="button" class="portfolio__item" data-category={item.category}
+                data-modal-img={item.full} data-modal-title={title} data-modal-label={label}>
+                {img}{overlay}
+              </button>
+            );
+          }
+          // 3) Solo imagen
+          return <div class="portfolio__item" data-category={item.category}>{img}{overlay}</div>;
+        })}
+      </div>
+    </div>
+
+    <div class="portfolio__nav">
+      <button type="button" class="portfolio__arrow" data-portfolio-prev aria-label={t.portfolio.prev}>
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+      </button>
+      <button type="button" class="portfolio__arrow portfolio__arrow--solid" data-portfolio-next aria-label={t.portfolio.next}>
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal (usa <dialog> nativo: Esc y foco ya vienen resueltos) -->
+  <dialog class="portfolio-modal" data-portfolio-modal>
+    <div class="portfolio-modal__card">
+      <button type="button" class="portfolio-modal__close" data-modal-close aria-label={t.portfolio.close}>
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+      <div class="portfolio-modal__media">
+        <img src="" alt="" data-modal-img-el />
+      </div>
+      <div class="portfolio-modal__caption">
+        <span class="portfolio-modal__label" data-modal-label-el></span>
+        <h4 class="portfolio-modal__title" data-modal-title-el></h4>
+      </div>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  import './portfolio.js';
+</script>
