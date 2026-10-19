@@ -1,0 +1,51 @@
+---
+// Página 404. La usan pages/404.astro (ES) y pages/en/404.astro (EN).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../components/sections/NotFound/not-found.css';
+import { getLangFromUrl, useTranslations, localizePath, waLink } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const n = t.notFound;
+const home = localizePath('/', lang);
+
+const links = [
+  { href: `${home}#services`, label: t.nav.services, icon: 'palette' },
+  { href: `${home}#portfolio`, label: t.nav.portfolio, icon: 'photo_library' },
+  { href: `${home}#pricing`, label: t.nav.pricing, icon: 'sell' },
+  { href: localizePath('/blog/', lang), label: t.nav.blog, icon: 'article' },
+];
+---
+
+<BaseLayout title={n.metaTitle} description={n.metaDescription} noindex hasAlternate={false} alternateHref={localizePath('/', lang === 'es' ? 'en' : 'es')}>
+  <section class="not-found">
+    <div class="not-found__glow" aria-hidden="true"></div>
+    <div class="not-found__inner container">
+      <p class="not-found__code anim-up" aria-hidden="true">404</p>
+      <p class="not-found__kicker anim-up anim-d1">{n.kicker}</p>
+      <h1 class="not-found__title anim-up anim-d1" set:html={n.titleHtml} />
+      <p class="not-found__text anim-up anim-d2">{n.text}</p>
+
+      <div class="not-found__actions anim-up anim-d3">
+        <a class="btn btn--accent btn--lg" href={home}>{n.home}</a>
+        <a class="btn btn--ghost-light btn--lg" href={localizePath('/blog/', lang)}>{n.blog}</a>
+      </div>
+
+      <p class="not-found__links-title anim-up anim-d4">{n.linksTitle}</p>
+      <ul class="not-found__links anim-up anim-d4">
+        {links.map((l) => (
+          <li>
+            <a href={l.href}>
+              <span class="material-symbols-outlined" aria-hidden="true">{l.icon}</span>{l.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={waLink(t.wa.general)} target="_blank" rel="noopener">
+            <span class="material-symbols-outlined" aria-hidden="true">chat</span>{n.contact}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

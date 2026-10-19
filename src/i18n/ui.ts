@@ -252,6 +252,18 @@ const es = {
     country: 'México',
   },
 
+  notFound: {
+    metaTitle: 'Página no encontrada | Define Creative Studio',
+    metaDescription: 'La página que buscas no existe o cambió de dirección.',
+    kicker: 'Error 404',
+    titleHtml: 'Esta página se salió<br>del <span class="text-lime">brief</span>.',
+    text: 'La dirección que buscas no existe, cambió de lugar o se escribió mal. Te ayudamos a regresar.',
+    home: 'Ir al inicio',
+    blog: 'Ver el blog',
+    linksTitle: 'O ve directo a:',
+    contact: 'Escríbenos por WhatsApp',
+  },
+
   blog: {
     title: 'Blog',
     metaTitle: 'Blog | Define Creative Studio — Marketing Digital, Branding y Estrategia para Negocios',
@@ -519,6 +531,18 @@ const en: typeof es = {
     rights: 'All rights reserved.',
     city: 'Tijuana',
     country: 'Mexico',
+  },
+
+  notFound: {
+    metaTitle: 'Page not found | Define Creative Studio',
+    metaDescription: "The page you're looking for doesn't exist or has moved.",
+    kicker: 'Error 404',
+    titleHtml: 'This page went<br>off <span class="text-lime">brief</span>.',
+    text: "The address you're looking for doesn't exist, has moved or was mistyped. Let us help you get back.",
+    home: 'Go home',
+    blog: 'Visit the blog',
+    linksTitle: 'Or jump straight to:',
+    contact: 'Message us on WhatsApp',
   },
 
   blog: {

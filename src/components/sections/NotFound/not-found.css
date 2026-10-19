@@ -1,0 +1,80 @@
+/* ═══ PÁGINA 404 ═══ */
+.not-found {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - var(--nav-h));
+  margin-top: var(--nav-h);
+  display: flex;
+  align-items: center;
+  padding-block: 5rem;
+  background: var(--c-primary);
+  color: var(--c-white);
+  text-align: center;
+}
+.not-found__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 85% 10%, rgba(212, 221, 103, 0.08), transparent 70%),
+    radial-gradient(ellipse 40% 50% at 10% 90%, rgba(179, 163, 225, 0.08), transparent 70%);
+  pointer-events: none;
+}
+.not-found__inner { position: relative; max-width: 48rem; }
+
+/* El "404" gigante con contorno */
+.not-found__code {
+  font-family: var(--f-display);
+  font-size: clamp(7rem, 22vw, 13rem);
+  font-weight: var(--fw-heavy);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(212, 221, 103, 0.55);
+  margin-bottom: 1.5rem;
+  user-select: none;
+}
+.not-found__kicker {
+  margin-bottom: 1rem;
+  font-family: var(--f-display);
+  font-size: 0.68rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-lime);
+}
+.not-found__title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: var(--fw-heavy);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+.not-found__text { max-width: 32rem; margin: 0 auto 2.5rem; font-size: var(--fs-lead); color: rgba(255, 255, 255, 0.6); }
+
+.not-found__actions { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3.5rem; }
+
+.not-found__links-title {
+  margin-bottom: 1rem;
+  font-family: var(--f-display);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+.not-found__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+.not-found__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--f-display);
+  font-size: var(--fs-sm);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.not-found__links a:hover { background: var(--c-lime); border-color: var(--c-lime); color: var(--c-primary); }
+.not-found__links .material-symbols-outlined { font-size: 1.1rem; }
+
+@media (min-width: 640px) { .not-found__actions { flex-direction: row; } }
