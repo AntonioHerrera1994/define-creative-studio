@@ -1,12 +1,16 @@
 ---
 import './portfolio.css';
-import { portfolio, type PortfolioCategory } from '../../../data/portfolio';
+import { portfolio as localPortfolio, type PortfolioCategory } from '../../../data/portfolio';
+import { getRemoteProjects } from '../../../data/remote-projects';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const categories = Object.entries(t.portfolio.categories) as [PortfolioCategory, string][];
 const defaultFilter: PortfolioCategory = 'branding';
+
+const remote = await getRemoteProjects('vikingdev');
+const portfolio = [...localPortfolio, ...remote];
 
 const titleFor = (title: string | undefined, cat: PortfolioCategory) =>
   title ?? (cat === 'fotografia' ? t.portfolio.photoSession : t.portfolio.categories[cat]);
@@ -49,8 +53,7 @@ const titleFor = (title: string | undefined, cat: PortfolioCategory) =>
               )}
             </div>
           );
-          const img = <img src={item.thumb} alt={title} loading="lazy" width="400" height="500" />;
-
+const img = <img src={item.thumb} alt={item.alt ?? title} loading="lazy" width="400" height="500" />;
           // 1) Link externo
           if (item.href) {
             return (

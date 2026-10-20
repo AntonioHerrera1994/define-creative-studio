@@ -157,3 +157,20 @@ button.portfolio__item { cursor: zoom-in; }
 @media (min-width: 1024px) {
   .portfolio__track { --cards: 4; }
 }
+/* ── Web: tarjetas horizontales ── */
+.portfolio__item[data-category="web"] img {
+  aspect-ratio: 16 / 10;
+  object-position: top; /* muestra el encabezado del sitio */
+}
+
+.portfolio__track[data-filter="web"] {
+  --cards: 1;
+}
+
+@media (min-width: 768px) {
+  .portfolio__track[data-filter="web"] { --cards: 2; }
+}
+
+@media (min-width: 1024px) {
+  .portfolio__track[data-filter="web"] { --cards: 3; }
+}
