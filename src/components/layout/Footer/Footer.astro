@@ -1,26 +1,37 @@
 ---
 import './footer.css';
 import { SITE } from '../../../data/site';
-import { getLangFromUrl, useTranslations, localizePath, routeFor, waLink } from '../../../i18n/utils';
+import { getLangFromUrl, useTranslations, localizePath, waLink } from '../../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const home = localizePath('/', lang);
 const year = new Date().getFullYear();
+type FooterLink = { href: string; label: string; external?: boolean };
 
-const companyLinks = [
-  { href: `${home}#services`, label: t.nav.services },
-  { href: routeFor('/web-design-san-diego/', lang), label: t.footer.webPage },
+// Páginas de servicio (agrega aquí branding, fotografía… cuando existan)
+const serviceLinks: FooterLink[] = [
+  { href: localizePath('/web-design-san-diego/', lang), label: t.footer.webPage },
   { href: localizePath('/gohighlevel-san-diego/', lang), label: 'GoHighLevel' },
+  { href: `${home}#services`, label: lang === 'es' ? 'Todos los servicios' : 'All services' },
+];
+const companyLinks: FooterLink[] = [
   { href: `${home}#portfolio`, label: t.nav.portfolio },
   { href: `${home}#pricing`, label: t.nav.pricing },
   { href: localizePath('/blog/', lang), label: t.nav.blog },
+  { href: SITE.ikariUrl, label: t.nav.ikari, external: true },
 ];
-// TODO: crea estas páginas cuando las tengas
-const legalLinks = [
+// TODO: crea estas páginas cuando las tengas (hoy dan 404)
+const legalLinks: FooterLink[] = [
   { href: localizePath('/privacidad/', lang), label: t.footer.privacy },
   { href: localizePath('/terminos/', lang), label: t.footer.terms },
   { href: localizePath('/cookies/', lang), label: t.footer.cookies },
+];
+
+const columns = [
+  { title: t.footer.services, links: serviceLinks },
+  { title: t.footer.company, links: companyLinks },
+  { title: t.footer.legal, links: legalLinks },
 ];
 ---
 
@@ -28,8 +39,10 @@ const legalLinks = [
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <img src={SITE.logoWhite} alt={SITE.name} width="200" height="80" />
-        <p>{t.footer.about}</p>
+<a class="footer__logo" href={home} aria-label={SITE.name}>
+  <img src={SITE.logoWhite} alt={SITE.name} width="170" height="175" loading="lazy" />
+</a>
+<p class="footer__about">{t.footer.about}</p>
 
         <div class="footer__social">
           <a href={SITE.social.facebook} target="_blank" rel="noopener" aria-label="Facebook">
@@ -44,24 +57,25 @@ const legalLinks = [
         </div>
       </div>
 
-      <div>
-        <h4 class="footer__heading">{t.footer.company}</h4>
-        <ul class="footer__list">
-          {companyLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="footer__heading">{t.footer.legal}</h4>
-        <ul class="footer__list">
-          {legalLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-        </ul>
-      </div>
+         {columns.map((col) => (
+        <nav class="footer__col" aria-label={col.title}>
+          <h2 class="footer__heading">{col.title}</h2>
+          <ul class="footer__list">
+            {col.links.map((l) => (
+              <li>
+<a href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
     </div>
 
-    <div class="footer__bottom">
+      <div class="footer__bottom">
       <p>© {year} {SITE.name}. {t.footer.rights}</p>
-      <div><span>{t.footer.city}</span><span>{t.footer.country}</span></div>
+      <p class="footer__places">
+        <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+        San Diego <span aria-hidden="true">·</span> Tijuana
+      </p>
     </div>
   </div>
 </footer>

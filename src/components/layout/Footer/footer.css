@@ -2,59 +2,94 @@
 .footer {
   background: var(--c-primary);
   color: var(--c-white);
-  padding-block: 5rem;
+  padding-block: 4.5rem 2.5rem;
+  font-family: var(--f-body);
 }
+
+/* Grid: marca + 3 columnas de links */
 .footer__grid {
   display: grid;
-  gap: 3rem;
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 2rem;
+  padding-bottom: 3.5rem;
 }
-.footer__brand img { width: 200px; margin-bottom: 1.5rem; }
-.footer__brand p {
-  max-width: 28rem;
-  font-size: var(--fs-lead);
+.footer__brand { grid-column: 1 / -1; }
+
+/* Logo: el SVG trae márgenes transparentes; los márgenes negativos los compensan
+   para que quede alineado a la izquierda con el texto. */
+.footer__logo { display: inline-block; }
+.footer__logo img {
+  display: block;
+  width: 170px;
+  max-width: none;
+  margin: -58px 0 -42px -23px;
+}
+
+.footer__about {
+  max-width: 24rem;
+  font-family: var(--f-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
   color: rgba(255, 255, 255, 0.6);
 }
 
-.footer__social { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.footer__social { display: flex; gap: 0.75rem; margin-top: 1.75rem; }
 .footer__social a {
-  width: 3rem;
-  height: 3rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: var(--r-full);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.footer__social a:hover { background: var(--c-lime); color: var(--c-primary); }
-.footer__social svg { width: 1.25rem; height: 1.25rem; fill: currentColor; }
+.footer__social a:hover { background: var(--c-lime); border-color: var(--c-lime); color: var(--c-primary); }
+.footer__social svg { width: 1.1rem; height: 1.1rem; fill: currentColor; }
 
+/* Columnas de links */
 .footer__heading {
+  margin-bottom: 1.25rem;
   font-family: var(--f-display);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--c-lime);
-  margin-bottom: 1.75rem;
 }
-.footer__list { display: grid; gap: 1rem; opacity: 0.7; }
+.footer__list { display: grid; gap: 0.8rem; }
+.footer__list a {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+}
 .footer__list a:hover { color: var(--c-lime); }
 
+/* Franja inferior */
 .footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 2.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  font-size: var(--fs-sm);
-  color: rgba(255, 255, 255, 0.4);
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-.footer__bottom div { display: flex; gap: 2rem; }
+.footer__bottom p {
+  font-family: var(--f-body);
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.45);
+}
+.footer__places { display: inline-flex; align-items: center; gap: 0.4rem; }
+.footer__places .material-symbols-outlined { font-size: 1rem; color: var(--c-lime); }
 
 @media (min-width: 768px) {
-  .footer__grid { grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
-  .footer__bottom { flex-direction: row; justify-content: space-between; }
+  .footer__grid { grid-template-columns: repeat(3, 1fr); }
+  .footer__bottom { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+@media (min-width: 1024px) {
+  /* Marca más ancha a la izquierda, 3 columnas iguales a la derecha */
+  .footer__grid { grid-template-columns: 1.6fr repeat(3, 1fr); gap: 3rem; }
+  .footer__brand { grid-column: auto; }
 }
