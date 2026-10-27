@@ -1,0 +1,32 @@
+/* ═══ FAQ DE SERVICIO ═══ */
+.s-faq__title { max-width: 46rem; margin: 0 auto 3rem; text-align: center; }
+.s-faq__list { display: grid; gap: 1rem; max-width: 52rem; margin-inline: auto; }
+.s-faq__item {
+  background: var(--c-white);
+  border: 2px solid var(--c-surface-line);
+  border-radius: var(--r-md);
+  transition: border-color 0.3s ease;
+}
+.s-faq__item[open] { border-color: var(--c-primary); }
+.s-faq__item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.35rem 1.75rem;
+  font-family: var(--f-display);
+  font-size: 1.05rem;
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  list-style: none;
+}
+.s-faq__item summary::-webkit-details-marker { display: none; }
+.s-faq__item summary .material-symbols-outlined {
+  flex-shrink: 0;
+  padding: 0.35rem;
+  border-radius: var(--r-full);
+  background: var(--c-surface-line);
+  transition: transform 0.3s ease;
+}
+.s-faq__item[open] summary .material-symbols-outlined { transform: rotate(180deg); background: var(--c-lime); }
+.s-faq__item p { padding: 0 1.75rem 1.5rem; font-size: 1rem; line-height: 1.75; color: var(--c-text-muted); }

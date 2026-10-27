@@ -1,3 +1,9 @@
+/* ═══════════════════════════════════════════════
+   DEFINE CREATIVE STUDIO — ESTILOS GLOBALES
+   Tokens, reset, tipografía y piezas compartidas.
+   Cada componente trae su propio .css para lo específico.
+═══════════════════════════════════════════════ */
+
 /* ── 1. Tokens ───────────────────────────────── */
 :root {
   /* Marca */
@@ -25,7 +31,7 @@
   --f-text: 'Source Sans 3', 'Plus Jakarta Sans', system-ui, sans-serif;
 
   /* Grosores — sube o baja estos 3 valores para todo el sitio */
-  --fw-heavy: 400;   /* títulos grandes, precios, cifras (antes 800) */
+  --fw-heavy: 600;   /* títulos grandes, precios, cifras (antes 800) */
   --fw-bold: 600;    /* subtítulos, botones, etiquetas (antes 700) */
   --fw-medium: 500;  /* h3, nombres, textos destacados (antes 600) */
 
@@ -239,3 +245,7 @@ strong { font-weight: var(--fw-bold); }
 .anim-d2 { animation-delay: 0.22s; }
 .anim-d3 { animation-delay: 0.34s; }
 .anim-d4 { animation-delay: 0.46s; }
+
+/* ── 11. Aparición al hacer scroll (la activa src/scripts/reveal.js; sin JS se ve normal) */
+.js-reveal [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.js-reveal [data-reveal].is-visible { opacity: 1; transform: none; }

@@ -13,8 +13,6 @@ export interface PortfolioItem {
   full?: string;
   href?: string;
   title?: string;
-    alt?: string; 
-
 }
 
 import { UPLOADS as U } from './site';
@@ -54,7 +52,15 @@ export const portfolio: PortfolioItem[] = [
   { category: 'diseno-grafico', title: 'Periódico Pre-Save', thumb: `${U}/2026/09/Periodico-presave-scaled.webp`, full: `${U}/2026/09/Periodico-presave-scaled.webp` },
   { category: 'diseno-grafico', title: 'Princess Tea Party', thumb: `${U}/2026/09/Princess-Tea-Party.webp`, full: `${U}/2026/09/Princess-Tea-Party.webp` },
 
-
+  // ── Web (link externo, sin modal)
+  { category: 'web', title: 'La Recta Coworking', thumb: `${U}/2025/06/DEFINE_PORTFOLIO-15.webp`, href: 'https://larectacoworking.com/' },
+  { category: 'web', title: 'GynandMed', thumb: `${U}/2025/06/DEFINE_PORTFOLIO-14.webp`, href: 'https://gynandmed.com/' },
+  { category: 'web', title: 'Capital Ville Advisors', thumb: `${U}/2025/06/Capital-ville.webp`, href: 'https://capitalvilleadvisors.com/' },
+  { category: 'web', title: 'Rihab', thumb: `${U}/2026/09/DisenoWeb_DEFINE-01-scaled.webp`, href: 'https://rihabvetcare.com/' },
+  { category: 'web', title: 'Creative Real Estate', thumb: `${U}/2026/09/DisenoWeb_DEFINE-02-scaled.webp`, href: 'https://realestate.definecreativestudio.com/' },
+  { category: 'web', title: 'GYNEHEALTH', thumb: `${U}/2026/09/DisenoWeb_DEFINE-03-scaled.webp`, href: 'https://define-studio.mx/drapartida/' },
+  { category: 'web', title: 'Ikari CRM', thumb: `${U}/2026/09/DisenoWeb_DEFINE-04-scaled.webp`, href: 'https://ikaricrm.com/' },
+  { category: 'web', title: 'Pre Save The Date', thumb: `${U}/2026/09/DisenoWeb_DEFINE-05-scaled.webp`, href: 'https://pre-savethedate.com/' },
 
   // ── Fotografía (miniatura = imagen completa)
   ...photos.map((p): PortfolioItem => ({ category: 'fotografia', thumb: `${U}/${p}`, full: `${U}/${p}` })),

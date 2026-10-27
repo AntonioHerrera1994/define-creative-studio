@@ -1,0 +1,22 @@
+/* ═══ TRABAJOS ═══ */
+.s-work__title { margin-top: 0.75rem; }
+.s-work__grid { display: grid; gap: 1.5rem; }
+.s-work__card {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--c-white);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.s-work__card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft-hover); }
+.s-work__card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; transition: transform 0.6s ease; }
+.s-work__card:hover img { transform: scale(1.04); }
+.s-work__info { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; }
+.s-work__info h3 { font-size: 1.05rem; font-weight: var(--fw-medium); }
+.s-work__info > span { display: inline-flex; align-items: center; gap: 0.2rem; flex-shrink: 0; font-family: var(--f-display); font-size: var(--fs-sm); font-weight: var(--fw-bold); }
+.s-work__info .material-symbols-outlined { font-size: 1.1rem; transition: transform 0.25s ease; }
+.s-work__card:hover .s-work__info .material-symbols-outlined { transform: translate(2px, -2px); }
+
+@media (min-width: 640px) { .s-work__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .s-work__grid { grid-template-columns: repeat(3, 1fr); } }

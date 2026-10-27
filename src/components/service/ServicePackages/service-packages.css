@@ -1,0 +1,90 @@
+/* ═══ PAQUETES ═══ */
+.s-packages__title { margin-top: 0.75rem; }
+.s-packages__grid { display: grid; gap: 1.5rem; align-items: stretch; max-width: 70rem; margin-inline: auto; }
+
+.s-pack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 2rem;
+  border-radius: var(--r-lg);
+  background: var(--c-white);
+  border: 1px solid var(--c-surface-line);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.s-pack:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft-hover); }
+
+/* Destacado: fondo azul */
+.s-pack--featured { background: var(--c-primary); border-color: var(--c-primary); color: var(--c-white); box-shadow: 0 30px 60px -20px rgba(0, 60, 73, 0.45); }
+.s-pack__badge {
+  position: absolute;
+  top: -0.85rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 1rem;
+  border-radius: var(--r-full);
+  background: var(--c-lime);
+  color: var(--c-primary);
+  font-family: var(--f-display);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.s-pack__name { font-size: 1.5rem; font-weight: var(--fw-heavy); }
+.s-pack__for { margin-top: 0.6rem; min-height: 4.8em; font-size: var(--fs-sm); line-height: 1.6; color: var(--c-text-muted); }
+.s-pack--featured .s-pack__for { color: rgba(255, 255, 255, 0.6); }
+
+.s-pack__price { display: flex; flex-direction: column; margin: 1.75rem 0 1rem; padding-top: 1.5rem; border-top: 1px solid var(--c-surface-line); }
+.s-pack--featured .s-pack__price { border-color: rgba(255, 255, 255, 0.12); }
+.s-pack__from { font-family: var(--f-display); font-size: var(--fs-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-text-soft); }
+.s-pack__amount { font-family: var(--f-display); font-size: 3rem; font-weight: var(--fw-heavy); line-height: 1.1; letter-spacing: -0.04em; }
+.s-pack--featured .s-pack__amount { color: var(--c-lime); }
+.s-pack__meta { font-size: var(--fs-sm); color: var(--c-text-soft); }
+.s-pack--featured .s-pack__from,
+.s-pack--featured .s-pack__meta { color: rgba(255, 255, 255, 0.5); }
+
+.s-pack__delivery {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--f-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+.s-pack__delivery .material-symbols-outlined { font-size: 1.1rem; color: var(--c-lavender); }
+.s-pack--featured .s-pack__delivery .material-symbols-outlined { color: var(--c-lime); }
+
+.s-pack__features { flex: 1; display: grid; align-content: start; gap: 0.7rem; margin-bottom: 2rem; }
+.s-pack__features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--fs-sm); line-height: 1.5; color: var(--c-text-muted); }
+.s-pack__features .material-symbols-outlined { flex-shrink: 0; font-size: 1.1rem; color: var(--c-primary); }
+.s-pack--featured .s-pack__features li { color: rgba(255, 255, 255, 0.85); }
+.s-pack--featured .s-pack__features .material-symbols-outlined { color: var(--c-lime); }
+
+.s-pack__cta { width: 100%; }
+
+.s-packages__notes { display: grid; gap: 0.4rem; max-width: 46rem; margin: 3rem auto 0; text-align: center; }
+.s-packages__notes li { font-size: var(--fs-sm); color: var(--c-text-soft); }
+.s-packages__notes li::before { content: '* '; }
+
+/* Un solo plan: tarjeta ancha centrada */
+.s-packages__grid--single { max-width: 46rem; }
+.s-packages__grid--single .s-pack__for { min-height: 0; }
+
+@media (min-width: 640px) {
+  .s-packages__grid--single .s-pack { padding: 3rem; }
+  .s-packages__grid--single .s-pack__features { grid-template-columns: repeat(2, 1fr); column-gap: 1.5rem; }
+}
+
+@media (min-width: 900px) {
+  .s-packages__grid { grid-template-columns: repeat(3, 1fr); }
+  .s-packages__grid--single { grid-template-columns: 1fr; }
+  .s-packages__grid--single .s-pack--featured,
+  .s-packages__grid--single .s-pack--featured:hover { transform: none; }
+  .s-pack--featured { transform: scale(1.03); }
+  .s-pack--featured:hover { transform: scale(1.03) translateY(-4px); }
+}

@@ -1,0 +1,18 @@
+# ═══════════════════════════════════════════════
+# Netlify: redirecciones y 404
+# Las reglas se leen de arriba hacia abajo; la primera que coincide gana.
+# ═══════════════════════════════════════════════
+
+# Sin www → la versión principal es define-studio.mx
+https://www.define-studio.mx/*  https://define-studio.mx/:splat  301!
+
+# Página de diseño web: slugs anteriores → nueva URL (Pilar 4)
+/pagina-web-tijuana/*      /web-design-san-diego/      301!
+/pagina-web-tijuana        /web-design-san-diego/      301!
+/en/web-design-tijuana/*   /en/web-design-san-diego/   301!
+/en/web-design-tijuana     /en/web-design-san-diego/   301!
+
+# 404 en inglés para todo lo que no exista bajo /en/
+/en/*  /en/404/  404
+
+# El resto usa /404.html automáticamente (no hace falta regla)

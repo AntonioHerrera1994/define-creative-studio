@@ -1,0 +1,29 @@
+---
+import './service-benefits.css';
+import type { ServicePage } from '../../../data/services/types';
+
+interface Props { data: ServicePage['benefits'] }
+const { data } = Astro.props;
+---
+
+<section class="s-benefits section">
+  <div class="container">
+    <header class="section-head">
+      <span class="kicker">{data.kicker}</span>
+      <h2 class="section-title s-benefits__title" set:html={data.titleHtml} />
+      <p class="section-head__sub">{data.subtitle}</p>
+    </header>
+
+    <div class="s-benefits__grid">
+      {data.items.map((b) => (
+        <article class={`s-benefits__card soft-card soft-card--hover s-benefits__card--${b.tone}`} data-reveal>
+          <div class={`icon-box icon-box--${b.tone}`}>
+            <span class="material-symbols-outlined" aria-hidden="true">{b.icon}</span>
+          </div>
+          <h3>{b.title}</h3>
+          <p>{b.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

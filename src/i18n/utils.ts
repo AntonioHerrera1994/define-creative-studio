@@ -25,12 +25,29 @@ export function localizePath(path: string, lang: Lang): string {
   return lang === defaultLang ? clean : `/${lang}${clean}`;
 }
 
+/**
+ * Páginas cuyo slug cambia según el idioma.
+ * Cada fila: { es: ruta en español, en: ruta en inglés } (sin el prefijo /en).
+ * Agrega aquí cada página nueva con slug traducido.
+ */
+export const ROUTE_ALIASES: Record<Lang, string>[] = [
+  // Ejemplo: { es: '/fotografia-de-producto/', en: '/product-photography/' },
+];
+
 /** Ruta equivalente en el otro idioma (para el switch ES/EN y hreflang) */
 export function getAlternatePath(url: URL, target: Lang): string {
   const current = getLangFromUrl(url);
   let path = url.pathname;
   if (current !== defaultLang) path = path.replace(new RegExp(`^/${current}`), '') || '/';
+  const alias = ROUTE_ALIASES.find((r) => r[current] === path);
+  if (alias) path = alias[target];
   return localizePath(path, target);
+}
+
+/** Ruta de una página en el idioma indicado, respetando ROUTE_ALIASES si su slug cambia */
+export function routeFor(esPath: string, lang: Lang): string {
+  const alias = ROUTE_ALIASES.find((r) => r.es === esPath);
+  return localizePath(alias ? alias[lang] : esPath, lang);
 }
 
 /** Link de WhatsApp con mensaje prellenado */

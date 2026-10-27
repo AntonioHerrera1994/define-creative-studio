@@ -1,0 +1,14 @@
+/* ═══ BENEFICIOS ═══ */
+.s-benefits__title { margin-top: 0.75rem; }
+.s-benefits__grid { display: grid; gap: 1.5rem; }
+.s-benefits__card { padding: 2.25rem 2rem; }
+.s-benefits__card .icon-box { margin-bottom: 1.5rem; }
+.s-benefits__card .icon-box .material-symbols-outlined { font-size: 1.75rem; }
+.s-benefits__card h3 { margin-bottom: 0.75rem; font-size: 1.2rem; font-weight: var(--fw-medium); }
+.s-benefits__card p { font-size: 0.95rem; line-height: 1.7; color: var(--c-text-muted); }
+.s-benefits__card--blue:hover .icon-box { background: var(--c-primary); color: var(--c-white); }
+.s-benefits__card--lime:hover .icon-box { background: var(--c-lime); }
+.s-benefits__card--lavender:hover .icon-box { background: var(--c-lavender); color: var(--c-white); }
+
+@media (min-width: 640px) { .s-benefits__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .s-benefits__grid { grid-template-columns: repeat(4, 1fr); } }

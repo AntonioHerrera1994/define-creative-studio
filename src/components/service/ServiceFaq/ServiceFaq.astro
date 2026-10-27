@@ -1,0 +1,25 @@
+---
+// FAQ visible. Las MISMAS preguntas alimentan el schema FAQPage (ver la vista).
+import './service-faq.css';
+import type { ServicePage } from '../../../data/services/types';
+
+interface Props { data: ServicePage['faq'] }
+const { data } = Astro.props;
+---
+
+<section class="s-faq section section--muted" id="faq">
+  <div class="container container--narrow">
+    <h2 class="section-title s-faq__title" set:html={data.titleHtml} />
+    <div class="s-faq__list">
+      {data.items.map((item, i) => (
+        <details class="s-faq__item" open={i === 0}>
+          <summary>
+            <span>{item.q}</span>
+            <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+          </summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

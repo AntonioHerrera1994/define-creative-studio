@@ -1,0 +1,27 @@
+---
+import './service-steps.css';
+import type { ServicePage } from '../../../data/services/types';
+
+interface Props { data: ServicePage['steps'] }
+const { data } = Astro.props;
+---
+
+<section class="s-steps section section--muted">
+  <div class="container">
+    <header class="section-head">
+      <span class="kicker">{data.kicker}</span>
+      <h2 class="section-title s-steps__title" set:html={data.titleHtml} />
+    </header>
+
+    <ol class="s-steps__list">
+      {data.items.map((s, i) => (
+        <li class="s-step" data-reveal>
+          <span class="s-step__num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="s-step__time">{s.time}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

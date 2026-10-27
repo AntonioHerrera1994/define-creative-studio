@@ -1,0 +1,55 @@
+---
+import './service-packages.css';
+import type { ServicePage } from '../../../data/services/types';
+import { waLink } from '../../../i18n/utils';
+
+interface Props { data: ServicePage['packages'] }
+const { data } = Astro.props;
+---
+
+<section class="s-packages section" id="paquetes">
+  <div class="container">
+    <header class="section-head">
+      <span class="kicker">{data.kicker}</span>
+      <h2 class="section-title s-packages__title" set:html={data.titleHtml} />
+      <p class="section-head__sub">{data.subtitle}</p>
+    </header>
+
+    <div class:list={['s-packages__grid', { 's-packages__grid--single': data.items.length === 1 }]}>
+      {data.items.map((p) => (
+        <article class:list={['s-pack', { 's-pack--featured': p.featured }]} data-reveal>
+          {p.featured && <span class="s-pack__badge">{data.popular}</span>}
+          <h3 class="s-pack__name">{p.name}</h3>
+          <p class="s-pack__for">{p.for}</p>
+
+          <div class="s-pack__price">
+            <span class="s-pack__from">{data.from}</span>
+            <span class="s-pack__amount">{p.price}</span>
+            <span class="s-pack__meta">{data.currency} · {p.note}</span>
+          </div>
+
+          <p class="s-pack__delivery">
+            <span class="material-symbols-outlined" aria-hidden="true">schedule</span>{p.delivery}
+          </p>
+
+          <ul class="s-pack__features">
+            {p.features.map((f) => (
+              <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>{f}</li>
+            ))}
+          </ul>
+
+          <a
+            class:list={['btn s-pack__cta', p.featured ? 'btn--accent' : 'btn--outline']}
+            href={waLink(p.wa)}
+            target="_blank"
+            rel="noopener"
+          >{data.cta}</a>
+        </article>
+      ))}
+    </div>
+
+    <ul class="s-packages__notes">
+      {data.footnotes.map((n) => <li>{n}</li>)}
+    </ul>
+  </div>
+</section>

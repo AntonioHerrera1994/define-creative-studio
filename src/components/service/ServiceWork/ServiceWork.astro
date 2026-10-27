@@ -1,0 +1,37 @@
+---
+// Muestra las piezas de la categoría indicada del portafolio (src/data/portfolio.ts)
+import './service-work.css';
+import type { ServicePage } from '../../../data/services/types';
+import { portfolio, type PortfolioCategory } from '../../../data/portfolio';
+
+interface Props { data: NonNullable<ServicePage['work']>; category: PortfolioCategory; limit?: number }
+const { data, category, limit = 6 } = Astro.props;
+const items = portfolio.filter((p) => p.category === category).slice(0, limit);
+---
+
+<section class="s-work section" id="trabajos">
+  <div class="container">
+    <header class="section-head">
+      <span class="kicker">{data.kicker}</span>
+      <h2 class="section-title s-work__title" set:html={data.titleHtml} />
+      <p class="section-head__sub">{data.subtitle}</p>
+    </header>
+
+    <div class="s-work__grid">
+      {items.map((item) => {
+        const Tag = item.href ? 'a' : 'div';
+        return (
+          <Tag class="s-work__card" data-reveal {...(item.href && { href: item.href, target: '_blank', rel: 'noopener' })}>
+            <img src={item.thumb} alt={item.title ?? ''} loading="lazy" width="600" height="450" />
+            <div class="s-work__info">
+              <h3>{item.title}</h3>
+              {item.href && (
+                <span>{data.visit}<span class="material-symbols-outlined" aria-hidden="true">arrow_outward</span></span>
+              )}
+            </div>
+          </Tag>
+        );
+      })}
+    </div>
+  </div>
+</section>

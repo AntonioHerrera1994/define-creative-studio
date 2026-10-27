@@ -1,0 +1,55 @@
+---
+// Bloque texto + mock de chat. En HighLevel se usa para "CRM para WhatsApp".
+import './service-highlight.css';
+import type { ServicePage } from '../../../data/services/types';
+
+interface Props { data: NonNullable<ServicePage['highlight']> }
+const { data } = Astro.props;
+---
+
+<section class="s-hl section">
+  <div class="s-hl__grid container container--narrow">
+    <div class="s-hl__text">
+      <span class="kicker">{data.kicker}</span>
+      <h2 class="s-hl__title" set:html={data.titleHtml} />
+      <p class="s-hl__lead">{data.text}</p>
+      <ul class="s-hl__points">
+        {data.points.map((p) => (
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>{p}</li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Mock: el mismo sitio en inglés y español, o un chat de WhatsApp */}
+    {data.visual === 'bilingual' && data.bilingual ? (
+      <div class="s-bi" aria-hidden="true" data-reveal>
+        {(['en', 'es'] as const).map((l) => (
+          <div class={`s-bi__win s-bi__win--${l}`}>
+            <div class="s-bi__bar">
+              <i></i><i></i><i></i>
+              <span class="s-bi__url">{data.bilingual!.url}{l === 'en' ? '/en' : ''}</span>
+              <span class="s-bi__switch"><b class:list={{ on: l === 'en' }}>EN</b><b class:list={{ on: l === 'es' }}>ES</b></span>
+            </div>
+            <div class="s-bi__page">
+              <small>{data.bilingual![l].kicker}</small>
+              <strong>{data.bilingual![l].title}</strong>
+              <span>{data.bilingual![l].cta}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="s-hl__phone" aria-hidden="true" data-reveal>
+        <div class="s-hl__head">
+          <span class="s-hl__avatar">{(data.chatName ?? '').charAt(0)}</span>
+          <div><strong>{data.chatName}</strong><small>{data.chatStatus}</small></div>
+        </div>
+        <div class="s-hl__chat">
+          {(data.chat ?? []).map((m) => (
+            <p class={`s-hl__msg s-hl__msg--${m.from}`}>{m.text}</p>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>

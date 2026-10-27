@@ -1,0 +1,28 @@
+---
+// Bloque de texto largo con la keyword: le da contexto a Google y al cliente.
+import './service-seo-text.css';
+import type { ServicePage } from '../../../data/services/types';
+
+interface Props { data: ServicePage['seoText'] }
+const { data } = Astro.props;
+---
+
+<section class="s-seo section section--muted">
+  <div class="s-seo__grid container container--narrow">
+    <div>
+      <span class="kicker">{data.kicker}</span>
+      <h2 class="s-seo__title" set:html={data.titleHtml} />
+    </div>
+    <div class="s-seo__body">
+      {data.paragraphsHtml.map((p) => <p set:html={p} />)}
+      <div class="s-seo__areas">
+        <p class="s-seo__areas-title">{data.areasTitle}</p>
+        <ul>
+          {data.areas.map((a) => (
+            <li><span class="material-symbols-outlined" aria-hidden="true">location_on</span>{a}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

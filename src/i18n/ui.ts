@@ -55,6 +55,7 @@ const es = {
   services: {
     eyebrowHtml: 'Nuestros <span class="text-accent">Servicios</span>',
     title: 'Estrategias que mueven la aguja',
+    more: 'Conocer más',
     items: [
       { icon: 'palette', tone: 'blue', title: 'Graphic Design & Branding', text: 'Construimos marcas distintivas desde su esencia. Desde la estrategia y el concepto creativo hasta la identidad visual y los lineamientos de marca, creamos sistemas coherentes diseñados para hacer que cada marca sea reconocible, relevante y memorable.' },
       { icon: 'draw', tone: 'lime', title: 'Art Direction', text: 'Definimos el universo visual detrás de una marca. A través de conceptos creativos, moodboards, styling, dirección de campañas y narrativa visual, transformamos ideas en imágenes y experiencias con una identidad clara.' },
@@ -244,6 +245,8 @@ const es = {
     about: 'Empoderando marcas a través de estrategias digitales audaces y diseño centrado en el usuario. Resultados reales, comunicación transparente.',
     company: 'Empresa',
     legal: 'Legal',
+    services: 'Servicios',
+    webPage: 'Diseño web',
     privacy: 'Privacidad',
     terms: 'Términos',
     cookies: 'Cookies',
@@ -338,6 +341,7 @@ const en: typeof es = {
   services: {
     eyebrowHtml: 'Our <span class="text-accent">Services</span>',
     title: 'Strategies that move the needle',
+    more: 'Learn more',
     items: [
       { icon: 'palette', tone: 'blue', title: 'Graphic Design & Branding', text: 'We build distinctive brands from their core. From strategy and creative concept to visual identity and brand guidelines, we create coherent systems designed to make every brand recognizable, relevant and memorable.' },
       { icon: 'draw', tone: 'lime', title: 'Art Direction', text: 'We define the visual universe behind a brand. Through creative concepts, moodboards, styling, campaign direction and visual storytelling, we turn ideas into images and experiences with a clear identity.' },
@@ -525,6 +529,8 @@ const en: typeof es = {
     about: 'Empowering brands through bold digital strategy and user-centered design. Real results, transparent communication.',
     company: 'Company',
     legal: 'Legal',
+    services: 'Services',
+    webPage: 'Web design',
     privacy: 'Privacy',
     terms: 'Terms',
     cookies: 'Cookies',

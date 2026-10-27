@@ -26,7 +26,6 @@ if (section) {
   function applyFilter(category) {
     index = 0;
     visible = [];
-      track.dataset.filter = category;
     items.forEach((el) => {
       const show = el.dataset.category === category;
       el.hidden = !show;

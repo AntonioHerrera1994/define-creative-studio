@@ -114,3 +114,46 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
     })),
   };
 }
+
+/** Servicio con paquetes "desde" (páginas de servicio) */
+export function serviceSchema(opts: {
+  name: string;
+  serviceType: string;
+  description: string;
+  url: string;
+  lang: Lang;
+  areaServed: string[];
+  offers: { name: string; description: string; price: number; currency: string; monthly?: boolean }[];
+}) {
+  return {
+    '@type': 'Service',
+    '@id': `${opts.url}#service`,
+    name: opts.name,
+    serviceType: opts.serviceType,
+    description: opts.description,
+    url: opts.url,
+    inLanguage: opts.lang === 'es' ? 'es-MX' : 'en-US',
+    provider: { '@id': ID.business },
+    areaServed: opts.areaServed.map((name) => ({ '@type': 'City', name })),
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: opts.name,
+      itemListElement: opts.offers.map((o) => ({
+        '@type': 'Offer',
+        name: o.name,
+        description: o.description,
+        price: o.price,
+        priceCurrency: o.currency,
+        priceSpecification: o.monthly
+          ? {
+              '@type': 'UnitPriceSpecification',
+              price: o.price,
+              priceCurrency: o.currency,
+              unitCode: 'MON',          // precio por mes
+              referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' },
+            }
+          : { '@type': 'PriceSpecification', minPrice: o.price, priceCurrency: o.currency },
+      })),
+    },
+  };
+}

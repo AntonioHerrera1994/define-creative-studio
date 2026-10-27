@@ -86,7 +86,3 @@
 .blog-grid { display: grid; gap: 2rem; }
 @media (min-width: 640px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
-
-/* Aparición al hacer scroll (la activa reveal.js; sin JS se ve normal) */
-.js-reveal [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
-.js-reveal [data-reveal].is-visible { opacity: 1; transform: none; }

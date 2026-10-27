@@ -13,7 +13,7 @@
 .hero__glow-lime { top: -10%; left: -10%; width: 40%; height: 40%; background: rgba(212, 221, 103, 0.12); }
 .hero__glow-dark { bottom: 10%; right: -10%; width: 35%; height: 35%; background: rgba(0, 0, 0, 0.06); }
 
-.hero__inner { max-width: 69rem; text-align: center; }
+.hero__inner { max-width: 64rem; text-align: center; }
 .hero__title {
   font-size: var(--fs-display);
   font-weight: var(--fw-heavy);

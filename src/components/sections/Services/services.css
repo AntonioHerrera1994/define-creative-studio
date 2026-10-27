@@ -18,5 +18,18 @@
 .services__card--lime:hover .icon-box { background: var(--c-lime); }
 .services__card--lavender:hover .icon-box { background: var(--c-lavender); color: var(--c-white); }
 
+a.services__card { display: block; }
+.services__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+  font-family: var(--f-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+.services__more .material-symbols-outlined { font-size: 1rem; transition: transform 0.25s ease; }
+.services__card:hover .services__more .material-symbols-outlined { transform: translateX(4px); }
+
 @media (min-width: 768px) { .services__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .services__grid { grid-template-columns: repeat(3, 1fr); } }

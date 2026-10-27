@@ -1,0 +1,84 @@
+---
+// ═══════════════════════════════════════════════
+// Plantilla de página de servicio (Página web, HighLevel, …)
+// Recibe el contenido de src/data/services/<servicio>.ts
+// ═══════════════════════════════════════════════
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceHero from '../components/service/ServiceHero/ServiceHero.astro';
+import ServiceBenefits from '../components/service/ServiceBenefits/ServiceBenefits.astro';
+import ServiceSeoText from '../components/service/ServiceSeoText/ServiceSeoText.astro';
+import ServiceHighlight from '../components/service/ServiceHighlight/ServiceHighlight.astro';
+import ServiceIncludes from '../components/service/ServiceIncludes/ServiceIncludes.astro';
+import ServicePackages from '../components/service/ServicePackages/ServicePackages.astro';
+import ServiceSteps from '../components/service/ServiceSteps/ServiceSteps.astro';
+import ServiceWork from '../components/service/ServiceWork/ServiceWork.astro';
+import ServiceFaq from '../components/service/ServiceFaq/ServiceFaq.astro';
+import BlogCta from '../components/blog/BlogCta/BlogCta.astro';
+import type { ServicePage as ServiceData } from '../data/services/types';
+import type { PortfolioCategory } from '../data/portfolio';
+import { serviceSchema, faqSchema, breadcrumbSchema } from '../components/seo/schema';
+import { getLangFromUrl, localizePath } from '../i18n/utils';
+import { SITE } from '../data/site';
+
+interface Props {
+  data: ServiceData;
+  workCategory?: PortfolioCategory;   // categoría del portafolio a mostrar
+}
+const { data, workCategory } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const url = new URL(Astro.url.pathname, SITE.url).href;
+
+const schema = [
+  serviceSchema({
+    name: data.seo.breadcrumb,
+    serviceType: data.seo.serviceType,
+    description: data.seo.description,
+    url,
+    lang,
+    areaServed: data.seoText.areas,
+    offers: data.packages.items.map((p) => ({
+      name: p.name,
+      description: p.for,
+      price: p.priceValue,
+      currency: p.priceCurrency,
+      monthly: p.billing === 'monthly',
+    })),
+  }),
+  faqSchema(data.faq.items),
+  breadcrumbSchema([
+    { name: SITE.shortName, url: new URL(localizePath('/', lang), SITE.url).href },
+    { name: data.seo.breadcrumb, url },
+  ]),
+];
+---
+
+<BaseLayout
+  title={data.seo.title}
+  description={data.seo.description}
+  keywords={data.seo.keywords}
+  image={data.hero.image}
+  imageAlt={data.seo.ogImageAlt}
+  schema={schema}
+>
+  <ServiceHero data={data.hero} />
+  <ServiceBenefits data={data.benefits} />
+  <ServiceSeoText data={data.seoText} />
+  {data.highlight && <ServiceHighlight data={data.highlight} />}
+  <ServiceIncludes data={data.includes} />
+  <ServicePackages data={data.packages} />
+  <ServiceSteps data={data.steps} />
+  {data.work && workCategory && <ServiceWork data={data.work} category={workCategory} />}
+  <ServiceFaq data={data.faq} />
+  <BlogCta
+    kicker={data.cta.kicker}
+    titleHtml={data.cta.titleHtml}
+    text={data.cta.text}
+    primary={{ label: data.cta.primary, wa: data.hero.wa }}
+    secondary={{ label: data.cta.secondary, href: data.work && workCategory ? '#trabajos' : '#paquetes' }}
+    note={data.cta.note}
+  />
+</BaseLayout>
+
+<script>
+  import '../scripts/reveal.js';
+</script>

@@ -1,7 +1,7 @@
 ---
 import './footer.css';
 import { SITE } from '../../../data/site';
-import { getLangFromUrl, useTranslations, localizePath, waLink } from '../../../i18n/utils';
+import { getLangFromUrl, useTranslations, localizePath, routeFor, waLink } from '../../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -10,6 +10,8 @@ const year = new Date().getFullYear();
 
 const companyLinks = [
   { href: `${home}#services`, label: t.nav.services },
+  { href: routeFor('/web-design-san-diego/', lang), label: t.footer.webPage },
+  { href: localizePath('/gohighlevel-san-diego/', lang), label: 'GoHighLevel' },
   { href: `${home}#portfolio`, label: t.nav.portfolio },
   { href: `${home}#pricing`, label: t.nav.pricing },
   { href: localizePath('/blog/', lang), label: t.nav.blog },

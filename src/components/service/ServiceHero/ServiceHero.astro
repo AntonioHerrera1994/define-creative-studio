@@ -1,0 +1,66 @@
+---
+import './service-hero.css';
+import type { ServicePage } from '../../../data/services/types';
+import { waLink } from '../../../i18n/utils';
+
+interface Props { data: ServicePage['hero'] }
+const { data } = Astro.props;
+---
+
+<section class="s-hero">
+  <div class="s-hero__glow" aria-hidden="true"></div>
+  <div class="s-hero__grid container">
+    <div class="s-hero__text">
+      <p class="s-hero__kicker anim-up">{data.kicker}</p>
+      <h1 class="s-hero__title anim-up anim-d1" set:html={data.titleHtml} />
+      <p class="s-hero__intro anim-up anim-d2">{data.intro}</p>
+
+      <div class="s-hero__ctas anim-up anim-d3">
+        <a class="btn btn--accent btn--lg" href={waLink(data.wa)} target="_blank" rel="noopener">{data.ctaPrimary}</a>
+        <a class="btn btn--ghost-light btn--lg" href="#paquetes">{data.ctaSecondary}</a>
+      </div>
+
+      <ul class="s-hero__trust anim-up anim-d4">
+        {data.trust.map((item) => (
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Visual: imagen en mockup de navegador, o mock de CRM hecho en HTML -->
+    <div class="s-hero__visual anim-up anim-d3">
+      <div class="s-hero__browser">
+        <div class="s-hero__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        {data.visual === 'crm' && data.crm ? (
+          <div class="s-crm" aria-hidden="true">
+            <p class="s-crm__title"><span class="material-symbols-outlined">view_kanban</span>{data.crm.title}</p>
+            <div class="s-crm__cols">
+              {data.crm.columns.map((col, i) => (
+                <div class={`s-crm__col s-crm__col--${i}`}>
+                  <p class="s-crm__col-name">{col.name}<b>{col.cards.length}</b></p>
+                  {col.cards.map((c) => (
+                    <div class="s-crm__card">
+                      <span class="s-crm__avatar">{c.name.charAt(0)}</span>
+                      <div><strong>{c.name}</strong><small>{c.meta}</small></div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div class="s-crm__toast">
+              <span class="material-symbols-outlined">bolt</span>{data.crm.toast}
+            </div>
+          </div>
+        ) : (
+          <img src={data.image} alt={data.imageAlt ?? ''} width="1200" height="900" fetchpriority="high" />
+        )}
+      </div>
+      <div class="s-hero__float s-hero__float--top">
+        <strong>{data.floatTop.value}</strong><span>{data.floatTop.label}</span>
+      </div>
+      <div class="s-hero__float s-hero__float--bottom">
+        <strong>{data.floatBottom.value}</strong><span>{data.floatBottom.label}</span>
+      </div>
+    </div>
+  </div>
+</section>
