@@ -18,7 +18,7 @@
 }
 .navbar__logo img { width: 150px; height: auto; }
 
-.navbar__links { display: none; gap: 2rem; }
+.navbar__links { display: none; align-items: center; gap: 2rem; }
 .navbar__links a {
   font-family: var(--f-display);
   font-weight: 500;
@@ -38,6 +38,88 @@
 }
 .navbar__lang:hover { transform: scale(1.05); }
 .navbar__cta { display: none; }
+
+/* ── Dropdown de servicios (escritorio) ── */
+.navbar__dd { position: relative; }
+.navbar__dd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  font-family: var(--f-display);
+  font-weight: 500;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+.navbar__dd-btn .material-symbols-outlined { font-size: 1.15rem; transition: transform 0.25s ease; }
+.navbar__dd-btn:hover,
+.navbar__dd[data-open] .navbar__dd-btn { color: var(--c-lavender); }
+
+.navbar__dd-panel {
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  left: 50%;
+  width: 20rem;
+  padding: 0.6rem;
+  border-radius: var(--r-md);
+  background: var(--c-white);
+  border: 1px solid var(--c-surface-line);
+  box-shadow: 0 24px 48px -16px rgba(0, 60, 73, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+/* Puente invisible para que el hover no se pierda entre el botón y el panel */
+.navbar__dd-panel::before { content: ''; position: absolute; inset: -1rem 0 100% 0; }
+
+/* Abierto: por clic/teclado (data-open) o por hover en dispositivos con mouse */
+.navbar__dd[data-open] .navbar__dd-panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.navbar__dd[data-open] .navbar__dd-btn .material-symbols-outlined { transform: rotate(180deg); }
+@media (hover: hover) {
+  .navbar__dd:hover .navbar__dd-panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+  .navbar__dd:hover .navbar__dd-btn { color: var(--c-lavender); }
+  .navbar__dd:hover .navbar__dd-btn .material-symbols-outlined { transform: rotate(180deg); }
+}
+
+.navbar__dd-panel ul { display: grid; gap: 0.25rem; }
+.navbar__links .navbar__dd-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.75rem;
+  border-radius: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+.navbar__links .navbar__dd-item:hover { background: var(--c-surface-low); color: inherit; }
+.navbar__dd-icon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: rgba(212, 221, 103, 0.25);
+  color: var(--c-primary);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+.navbar__dd-item:hover .navbar__dd-icon { background: var(--c-lime); }
+.navbar__dd-item strong { display: block; font-family: var(--f-display); font-size: 0.95rem; font-weight: var(--fw-medium); }
+.navbar__dd-item small { display: block; margin-top: 0.1rem; font-family: var(--f-body); font-size: var(--fs-xs); line-height: 1.4; color: var(--c-text-soft); }
+
+.navbar__links .navbar__dd-all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  padding: 0.75rem;
+  border-top: 1px solid var(--c-surface-line);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+.navbar__dd-all .material-symbols-outlined { font-size: 1rem; transition: transform 0.2s ease; }
+.navbar__dd-all:hover .material-symbols-outlined { transform: translateX(3px); }
 
 /* Hamburguesa */
 .navbar__burger {
@@ -80,6 +162,31 @@
   border-bottom: 1px solid var(--c-surface-line);
 }
 .navbar__mobile li:last-child a { border-bottom: 0; }
+/* Servicios como acordeón en móvil */
+.navbar__mgroup summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.75rem;
+  font-family: var(--f-display);
+  font-size: 1.125rem;
+  border-bottom: 1px solid var(--c-surface-line);
+  cursor: pointer;
+  list-style: none;
+}
+.navbar__mgroup summary::-webkit-details-marker { display: none; }
+.navbar__mgroup summary .material-symbols-outlined { transition: transform 0.25s ease; }
+.navbar__mgroup[open] summary .material-symbols-outlined { transform: rotate(180deg); }
+.navbar__mobile .navbar__mgroup ul { padding: 0.25rem 0 0.5rem 0.75rem; }
+.navbar__mobile .navbar__mgroup a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  color: var(--c-text-muted);
+}
+.navbar__mobile .navbar__mgroup li:last-child a { border-bottom: 1px solid var(--c-surface-line); font-size: var(--fs-sm); }
+.navbar__mgroup a .material-symbols-outlined { font-size: 1.2rem; color: var(--c-lavender); }
 
 @keyframes navbarMenuIn {
   from { opacity: 0; transform: translateY(-8px); }

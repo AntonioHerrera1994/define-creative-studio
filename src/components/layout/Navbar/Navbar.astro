@@ -10,16 +10,36 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const home = localizePath('/', lang);
 const otherLang = lang === 'es' ? 'en' : 'es';
+const es = lang === 'es';
+
+type NavLink = { href: string; label: string; external?: boolean };
+
+// Páginas de servicio del dropdown (agrega aquí branding, fotografía… cuando existan)
+const serviceItems = [
+  {
+    href: localizePath('/web-design-san-diego/', lang),
+    icon: 'web',
+    title: es ? 'Diseño web' : 'Web design',
+    text: es ? 'Páginas web bilingües guiadas por tu marca' : 'Brand-driven, bilingual websites',
+  },
+  {
+    href: localizePath('/gohighlevel-san-diego/', lang),
+    icon: 'hub',
+    title: 'GoHighLevel',
+    text: es ? 'CRM y automatización administrados' : 'Managed CRM & automation',
+  },
+];
+const allServices = { href: `${home}#services`, label: es ? 'Ver todos los servicios' : 'View all services' };
 
 // Las anclas apuntan al home para que funcionen también desde el blog
-const links = [
-  { href: `${home}#services`, label: t.nav.services },
+const links: NavLink[] = [
   { href: `${home}#proceso`, label: t.nav.process },
   { href: `${home}#portfolio`, label: t.nav.portfolio },
   { href: `${home}#pricing`, label: t.nav.pricing },
   { href: localizePath('/blog/', lang), label: t.nav.blog },
   { href: SITE.ikariUrl, label: t.nav.ikari, external: true },
 ];
+const ext = (l: NavLink) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
 ---
 
 <nav class="navbar" aria-label="Principal">
@@ -29,10 +49,35 @@ const links = [
     </a>
 
     <ul class="navbar__links">
+      <!-- Dropdown de servicios -->
+      <li class="navbar__dd" data-dropdown>
+        <button class="navbar__dd-btn" type="button" aria-expanded="false" aria-controls="services-menu">
+          {t.nav.services}
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="navbar__dd-panel" id="services-menu">
+          <ul>
+            {serviceItems.map((s) => (
+              <li>
+                <a class="navbar__dd-item" href={s.href}>
+                  <span class="navbar__dd-icon material-symbols-outlined" aria-hidden="true">{s.icon}</span>
+                  <span>
+                    <strong>{s.title}</strong>
+                    <small>{s.text}</small>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a class="navbar__dd-all" href={allServices.href}>
+            {allServices.label}
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+      </li>
+
       {links.map((l) => (
-        <li>
-          <a href={l.href} {...(l.external && { target: '_blank', rel: 'noopener' })}>{l.label}</a>
-        </li>
+        <li><a href={l.href} {...ext(l)}>{l.label}</a></li>
       ))}
     </ul>
 
@@ -51,10 +96,27 @@ const links = [
   <!-- Menú móvil -->
   <div class="navbar__mobile" id="mobile-menu" hidden>
     <ul class="container">
+      <!-- Servicios como acordeón (details nativo, sin JS) -->
+      <li>
+        <details class="navbar__mgroup">
+          <summary>
+            {t.nav.services}
+            <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+          </summary>
+          <ul>
+            {serviceItems.map((s) => (
+              <li>
+                <a href={s.href}>
+                  <span class="material-symbols-outlined" aria-hidden="true">{s.icon}</span>{s.title}
+                </a>
+              </li>
+            ))}
+            <li><a href={allServices.href}>{allServices.label}</a></li>
+          </ul>
+        </details>
+      </li>
       {links.map((l) => (
-        <li>
-          <a href={l.href} {...(l.external && { target: '_blank', rel: 'noopener' })}>{l.label}</a>
-        </li>
+        <li><a href={l.href} {...ext(l)}>{l.label}</a></li>
       ))}
       <li><a href={waLink(t.wa.general)} target="_blank" rel="noopener">{t.nav.contact}</a></li>
     </ul>
