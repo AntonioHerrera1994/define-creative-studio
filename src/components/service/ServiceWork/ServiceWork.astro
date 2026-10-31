@@ -1,12 +1,21 @@
 ---
-// Muestra las piezas de la categoría indicada del portafolio (src/data/portfolio.ts)
+// Proyectos de la categoría indicada (vienen de la API de VikingDev vía getPortfolio).
+// Muestra los primeros `limit` y el resto queda oculto tras "Ver más proyectos".
 import './service-work.css';
 import type { ServicePage } from '../../../data/services/types';
-import { portfolio, type PortfolioCategory } from '../../../data/portfolio';
+import type { PortfolioCategory } from '../../../data/portfolio';
+import { getPortfolio } from '../../../lib/portfolio';
+import { getLangFromUrl } from '../../../i18n/utils';
 
 interface Props { data: NonNullable<ServicePage['work']>; category: PortfolioCategory; limit?: number }
 const { data, category, limit = 6 } = Astro.props;
-const items = portfolio.filter((p) => p.category === category).slice(0, limit);
+
+const items = (await getPortfolio()).filter((p) => p.category === category);
+const hiddenCount = Math.max(0, items.length - limit);
+
+const es = getLangFromUrl(Astro.url) === 'es';
+const moreLabel = es ? `Ver ${hiddenCount} proyectos más` : `Show ${hiddenCount} more projects`;
+const lessLabel = es ? 'Ver menos' : 'Show less';
 ---
 
 <section class="s-work section" id="trabajos">
@@ -17,12 +26,16 @@ const items = portfolio.filter((p) => p.category === category).slice(0, limit);
       <p class="section-head__sub">{data.subtitle}</p>
     </header>
 
-    <div class="s-work__grid">
-      {items.map((item) => {
+    <div class="s-work__grid" id="work-grid">
+      {items.map((item, i) => {
         const Tag = item.href ? 'a' : 'div';
         return (
-          <Tag class="s-work__card" data-reveal {...(item.href && { href: item.href, target: '_blank', rel: 'noopener' })}>
-            <img src={item.thumb} alt={item.title ?? ''} loading="lazy" width="600" height="450" />
+          <Tag
+            class:list={['s-work__card', { 's-work__card--extra': i >= limit }]}
+            data-reveal
+            {...(item.href ? { href: item.href, target: '_blank', rel: 'noopener' } : {})}
+          >
+            <img src={item.thumb} alt={item.alt ?? item.title ?? ''} loading="lazy" width="600" height="450" />
             <div class="s-work__info">
               <h3>{item.title}</h3>
               {item.href && (
@@ -33,5 +46,32 @@ const items = portfolio.filter((p) => p.category === category).slice(0, limit);
         );
       })}
     </div>
+
+    {hiddenCount > 0 && (
+      <div class="s-work__more">
+        <button
+          type="button"
+          class="btn btn--outline"
+          aria-expanded="false"
+          aria-controls="work-grid"
+          data-work-toggle
+          data-more={moreLabel}
+          data-less={lessLabel}
+        >{moreLabel}</button>
+      </div>
+    )}
   </div>
+</section>
+
+<script>
+  // Muestra / oculta los proyectos extra
+  const btn = document.querySelector<HTMLButtonElement>('[data-work-toggle]');
+  const grid = document.getElementById('work-grid');
+  btn?.addEventListener('click', () => {
+    const open = grid!.classList.toggle('is-expanded');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? btn.dataset.less! : btn.dataset.more!;
+    if (!open) grid!.closest('section')?.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
 </section>

@@ -20,3 +20,8 @@
 
 @media (min-width: 640px) { .s-work__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .s-work__grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Proyectos extra: ocultos hasta presionar "Ver más proyectos" */
+.s-work__card--extra { display: none; }
+.s-work__grid.is-expanded .s-work__card--extra { display: block; }
+.s-work__more { display: flex; justify-content: center; margin-top: 2.5rem; }
