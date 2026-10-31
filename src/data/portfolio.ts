@@ -13,6 +13,7 @@ export interface PortfolioItem {
   full?: string;
   href?: string;
   title?: string;
+    alt?: string;  
 }
 
 import { UPLOADS as U } from './site';

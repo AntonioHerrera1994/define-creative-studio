@@ -1,8 +1,10 @@
 ---
 import './portfolio.css';
-import { portfolio, type PortfolioCategory } from '../../../data/portfolio';
+import type { PortfolioCategory } from '../../../data/portfolio';
+import { getPortfolio } from '../../../lib/portfolio';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 
+const portfolio = await getPortfolio();
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const categories = Object.entries(t.portfolio.categories) as [PortfolioCategory, string][];
@@ -49,7 +51,7 @@ const titleFor = (title: string | undefined, cat: PortfolioCategory) =>
               )}
             </div>
           );
-          const img = <img src={item.thumb} alt={title} loading="lazy" width="400" height="500" />;
+          const img = <img src={item.thumb} alt={item.alt ?? title} loading="lazy" width="400" height="500" />;
 
           // 1) Link externo
           if (item.href) {

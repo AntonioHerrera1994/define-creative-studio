@@ -44,7 +44,7 @@
 button.portfolio__item { cursor: zoom-in; }
 .portfolio__item img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 6.5 / 5;
   object-fit: cover;
   transition: transform 0.7s ease;
 }
