@@ -1,10 +1,4 @@
-// ─────────────────────────────────────────────
-// Portafolio. Para agregar una pieza, agrega un objeto al arreglo.
-//  - category: branding | diseno-grafico | web | fotografia | redes | interiores
-//  - thumb: imagen de la tarjeta · full: imagen del modal (si no hay, no abre modal)
-//  - href: link externo (las piezas web abren el sitio en vez del modal)
-//  - title: si se omite en fotografía, se usa "Sesión fotográfica"/"Photo session"
-// ─────────────────────────────────────────────
+
 export type PortfolioCategory = 'branding' | 'diseno-grafico' | 'web' | 'fotografia' | 'redes' | 'interiores';
 
 export interface PortfolioItem {
