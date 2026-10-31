@@ -36,7 +36,7 @@
   --fw-medium: 500;  /* h3, nombres, textos destacados (antes 600) */
 
   /* Escala */
-  --fs-display: clamp(2.75rem, 6vw, 4.0625rem); /* 44 → 65px */
+  --fs-display: clamp(2.75rem, 6vw, 3.7rem); /* 44 → 65px */
   --fs-h2: clamp(2.25rem, 4.5vw, 3rem);         /* 36 → 48px */
   --fs-h2-dark: clamp(2.5rem, 4.5vw, 3.25rem);  /* 40 → 52px */
   --fs-h3: 1.5rem;

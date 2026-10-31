@@ -9,6 +9,7 @@ const t = useTranslations(lang);
 // Tarjetas que llevan a una página dedicada (por ícono del servicio)
 const pages: Record<string, string> = {
   web: routeFor('/web-design-san-diego/', lang),
+    settings: routeFor('/gohighlevel-san-diego/', lang),
 };
 ---
 
@@ -16,7 +17,7 @@ const pages: Record<string, string> = {
   <div class="container">
     <header class="section-head">
       <span class="section-head__eyebrow" set:html={t.services.eyebrowHtml} />
-      <h2 class="section-head__title">{t.services.title}</h2>
+      <h2 class="section-head__sub " style="font-weight: 400;">{t.services.title}</h2>
     </header>
 
     <div class="services__grid">
@@ -26,7 +27,7 @@ const pages: Record<string, string> = {
         return (
           <Tag
             class={`services__card soft-card soft-card--hover services__card--${s.tone}`}
-            {...(href && { href })}
+          {...(href ? { href } : {})}
           >
             <div class={`icon-box icon-box--${s.tone}`}>
               <span class="material-symbols-outlined" aria-hidden="true">{s.icon}</span>

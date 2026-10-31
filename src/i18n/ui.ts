@@ -1,8 +1,4 @@
-// ─────────────────────────────────────────────
-// Textos del sitio en ES / EN
-// Cada sección del home tiene su bloque. Para cambiar un texto,
-// edítalo aquí en ambos idiomas; los componentes no llevan texto fijo.
-// ─────────────────────────────────────────────
+
 
 export const languages = { es: 'Español', en: 'English' } as const;
 export type Lang = keyof typeof languages;
@@ -12,15 +8,14 @@ const es = {
   meta: {
     htmlLang: 'es',
     ogLocale: 'es_MX',
-    title: 'Define Creative Studio | Agencia de Branding, Marketing Digital y Fotografía en Tijuana, México',
+    title: 'Estudio Creativo en San Diego | Branding y Fotografía | Define',
     description:
-      'Define Creative Studio: agencia de branding, dirección de arte, fotografía editorial, contenido, diseño web y paid media en Tijuana. Más de 14 años construyendo marcas coherentes, visualmente poderosas y estratégicamente relevantes.',
-    ogTitle: 'Define Creative Studio | Branding, Fotografía y Marketing Digital en Tijuana',
+      'Define Creative Studio: estudio creativo en San Diego especializado en branding, dirección de arte, fotografía de producto, contenido editorial y diseño web. Atendemos California y Tijuana. Más de 14 años construyendo marcas coherentes y visualmente poderosas.',
+    ogTitle: 'Define Creative Studio | Branding, Fotografía y Diseño Web en San Diego',
     ogDescription:
-      'Construimos marcas que destacan. Branding, dirección de arte, fotografía editorial, diseño web y paid media para negocios con ambición. Agencia creativa con 14+ años en Tijuana, México.',
-    ogImageAlt: 'Define Creative Studio — Agencia de Branding y Marketing Digital en Tijuana, México',
-    keywords:
-      'agencia de branding Tijuana, dirección de arte Tijuana, fotografía editorial Tijuana, fotografía de producto Tijuana, diseño web Tijuana, paid media Tijuana, Meta Ads Tijuana, Google Ads México, identidad de marca, agencia creativa Tijuana, marketing digital Baja California, Define Creative Studio',
+      'Construimos marcas que destacan. Branding, dirección de arte, fotografía editorial, diseño web y paid media para negocios con ambición. Estudio creativo con 14+ años entre San Diego y Tijuana.',
+    ogImageAlt: 'Define Creative Studio — Estudio de Branding y Fotografía en San Diego, California',
+    // keywords eliminado (Google lo ignora desde 2009)
   },
 
   nav: {
@@ -44,25 +39,26 @@ const es = {
 
   hero: {
     titleHtml:
-      '<span class="text-accent">Construimos</span> marcas <br>que destacan y <span class="text-accent">estrategias</span> que <br>las hacen crecer.',
+      'Estudio creativo de <span class="text-accent">branding</span>, fotografía y marketing <br>bilingüe en <span class="text-accent">San Diego</span>.',
     subtitle:
-      'Branding, dirección de arte, fotografía, contenido editorial, diseño web y paid media (ADS) para construir marcas visualmente poderosas y estratégicamente relevantes.',
+      'Construimos marcas que destacan y estrategias que las hacen crecer: identidad de marca, fotografía de producto, dirección de arte, contenido editorial, páginas web, anuncios en Meta y Google, y CRM con GoHighLevel. En español e inglés.',
     videoTitle: 'Define Creative Studio — Showreel',
-    ctaPrimary: 'Empezar ahora',
+    ctaPrimary: 'Cotiza por WhatsApp',
     ctaSecondary: 'Ver portafolio',
   },
 
   services: {
-    eyebrowHtml: 'Nuestros <span class="text-accent">Servicios</span>',
-    title: 'Estrategias que mueven la aguja',
+    eyebrowHtml: 'Nuestros <span class="text-accent">Servicios</span> creativos',
+    title: 'Branding, fotografía, dirección de arte y web para marcas que quieren destacar',
     more: 'Conocer más',
     items: [
-      { icon: 'palette', tone: 'blue', title: 'Graphic Design & Branding', text: 'Construimos marcas distintivas desde su esencia. Desde la estrategia y el concepto creativo hasta la identidad visual y los lineamientos de marca, creamos sistemas coherentes diseñados para hacer que cada marca sea reconocible, relevante y memorable.' },
-      { icon: 'draw', tone: 'lime', title: 'Art Direction', text: 'Definimos el universo visual detrás de una marca. A través de conceptos creativos, moodboards, styling, dirección de campañas y narrativa visual, transformamos ideas en imágenes y experiencias con una identidad clara.' },
-      { icon: 'photo_camera', tone: 'lavender', title: 'Product & Brand Photography', text: 'Creamos fotografía intencional, editorial y completamente alineada con la identidad de cada marca. Desde producto y e-commerce hasta lifestyle y campañas, cada imagen está pensada como parte de una narrativa visual más amplia.' },
-      { icon: 'article', tone: 'blue', title: 'Editorial Content', text: 'Creamos contenido editorial que va más allá de simplemente llenar un feed. Desde conceptos creativos y storytelling hasta campañas sociales, narrativas visuales y contenido de marca, cada pieza está diseñada para fortalecer la identidad y generar conexiones relevantes con su audiencia.' },
-      { icon: 'campaign', tone: 'lime', title: 'Paid Media (ads)', text: 'Convertimos marcas sólidas en crecimiento medible. A través de campañas estratégicas en Google y Meta, conectamos las marcas con las audiencias correctas, generamos tráfico de calidad y optimizamos constantemente para mejorar resultados.' },
-      { icon: 'web', tone: 'lavender', title: 'Web Design', text: 'Diseñamos experiencias digitales donde branding, funcionalidad y estrategia trabajan juntas. Desde landing pages hasta sitios corporativos y e-commerce, creamos páginas responsivas diseñadas para conectar, comunicar y convertir.' },
+      { icon: 'palette', tone: 'blue', title: 'Branding e Identidad Visual', text: 'Agencia de branding en San Diego. Construimos marcas distintivas desde su esencia: estrategia, concepto creativo, identidad visual y lineamientos de marca. Creamos sistemas coherentes que hacen que cada marca sea reconocible, relevante y memorable.' },
+      { icon: 'draw', tone: 'lime', title: 'Dirección de Arte', text: 'Dirección de arte para marcas en San Diego. Definimos el universo visual detrás de una marca: conceptos creativos, moodboards, styling, dirección de campañas y narrativa visual. Transformamos ideas en imágenes y experiencias con identidad clara.' },
+      { icon: 'photo_camera', tone: 'lavender', title: 'Fotografía de Producto y Marca', text: 'Fotografía de producto en San Diego. Creamos fotografía intencional, editorial y alineada con la identidad de cada marca: producto, e-commerce, lifestyle y campañas. Cada imagen es parte de una narrativa visual más amplia.' },
+      { icon: 'article', tone: 'blue', title: 'Contenido Editorial', text: 'Contenido editorial para marcas. Creamos piezas que van más allá de llenar un feed: conceptos creativos, storytelling, campañas sociales, narrativas visuales y contenido de marca diseñado para fortalecer la identidad y conectar con la audiencia.' },
+      { icon: 'campaign', tone: 'lime', title: 'Paid Media (Meta y Google Ads)', text: 'Publicidad en Meta y Google para negocios. Convertimos marcas sólidas en crecimiento medible: campañas estratégicas, audiencias correctas, tráfico de calidad y optimización constante para mejorar resultados.' },
+      { icon: 'web', tone: 'lavender', title: 'Diseño Web', text: 'Páginas web en San Diego. Creamos experiencias digitales donde branding, funcionalidad y estrategia trabajan juntas: landing pages, sitios corporativos y e-commerce responsivos diseñados para conectar, comunicar y convertir.' },
+      { icon: 'settings', tone: 'blue', title: 'CRM y Automatización (GoHighLevel)', text: 'GoHighLevel en San Diego. Implementamos y administramos tu CRM para que tu negocio dé seguimiento automático a cada prospecto: pipelines, WhatsApp, email marketing y reportes. Conectamos tu marca con ventas reales.' },
     ],
   },
 
@@ -79,13 +75,13 @@ const es = {
       'Y la forma en que <strong>llega a las personas correctas.</strong>',
     ],
     closingHtml:
-      'En <strong>Define Creative Studio</strong> conectamos estrategia, dirección creativa y ejecución para construir marcas coherentes en cada punto de contacto.',
-    imageAlt: 'Define Creative Studio — 14 años de experiencia en Tijuana y San Diego',
+      'En <strong>Define Creative Studio</strong> conectamos <strong>branding</strong>, <strong>dirección de arte</strong>, <strong>fotografía</strong> y ejecución para construir marcas coherentes en cada punto de contacto.',
+    imageAlt: 'Estudio creativo Define — branding y fotografía de producto en Tijuana y San Diego',
   },
 
   portfolio: {
     titleHtml: 'Casos de <span class="text-accent">Éxito</span>',
-    subtitle: 'Proyectos que generaron resultados reales para nuestros clientes.',
+    subtitle: 'Proyectos de branding, fotografía y diseño web que generaron resultados reales para nuestros clientes.',
     categories: {
       branding: 'Branding',
       'diseno-grafico': 'Diseño Gráfico',
@@ -104,26 +100,26 @@ const es = {
   process: {
     eyebrowHtml: 'Cómo <span class="text-accent">Trabajamos</span>',
     titleHtml: 'Nuestro proceso, <span class="text-muted">paso a paso</span>',
-    subtitle: 'De la primera reunión a resultados medibles. Sin burocracia, sin esperas eternas.',
+    subtitle: 'De la primera reunión a resultados medibles. Branding, fotografía y diseño web sin burocracia, sin esperas eternas.',
     steps: [
       { n: '01', tone: 'lime', title: 'Discover', text: 'Entendemos la marca, sus objetivos, audiencia y oportunidades.' },
       { n: '02', tone: 'dark', title: 'Define', text: 'Construimos la estrategia, concepto y dirección creativa.' },
-      { n: '03', tone: 'pink', title: 'Create', text: 'Diseñamos, producimos y desarrollamos cada punto de contacto.' },
+      { n: '03', tone: 'pink', title: 'Create', text: 'Diseñamos, producimos y desarrollamos cada punto de contacto: identidad visual, fotografía, contenido editorial y web.' },
       { n: '04', tone: 'primary', title: 'Launch & Grow', text: 'Lanzamos, medimos y evolucionamos el proyecto conforme la marca crece.' },
     ],
   },
 
   clients: {
     titleHtml: 'Confían en <span class="text-accent">Nosotros</span>',
-    logoAlt: 'Logo de cliente',
+    logoAlt: 'Cliente de Define Creative Studio — branding y fotografía',
   },
 
   projects: {
     kicker: 'Proyectos',
     titleHtml: 'Trabajo que <span class="text-lime">habla</span> por sí solo.',
-    subtitle: 'Estrategia, creatividad y ejecución en cada proyecto que tocamos.',
+    subtitle: 'Estrategia, creatividad y ejecución en cada proyecto de branding, fotografía y web.',
     items: [
-      { tag: 'CRM · Tecnología', title: 'Ikari CRM', text: 'Gestión inteligente para clínicas y negocios.' },
+      { tag: 'Branding · Tecnología', title: 'Ikari CRM', text: 'Identidad visual y comunicación para una plataforma de gestión inteligente para clínicas y negocios.' },
       { tag: 'Branding · Eventos', title: 'Pre Save the Date', text: 'Identidad visual para bodas con alma propia.' },
       { tag: 'Real Estate · Marketing', title: 'Define Real Estate', text: 'Publicidad digital para asesores inmobiliarios en EE.UU.' },
     ],
@@ -132,23 +128,23 @@ const es = {
   pricing: {
     kicker: 'Paquete',
     titleHtml: 'Todo lo que tu marca necesita,<br><span class="text-accent">en un solo paquete.</span>',
-    subtitle: 'Sin contratos eternos. Sin letra chica. Solo estrategia digital que construye y convierte.',
+    subtitle: 'Sin contratos eternos. Sin letra chica. Solo branding, contenido y estrategia digital que construye y convierte.',
     badge: 'Paquete integral',
     name: 'Brand Starter',
-    description: 'Para marcas que quieren comenzar, reactivar o profesionalizar su presencia digital.',
+    description: 'Para marcas que quieren comenzar, reactivar o profesionalizar su branding y presencia digital.',
     priceLabel: 'Inversión mensual',
     price: '$12,500',
     priceNote: '+ IVA · MXN/mes',
     introHtml:
-      'Reúne los elementos esenciales para construir una marca más sólida y visible: <strong>imagen, storytelling, contenido, redes sociales, publicidad, segmentación de audiencias y presencia local en Google.</strong>',
+      'Reúne los elementos esenciales para construir una marca más sólida y visible: <strong>identidad visual, storytelling, fotografía, contenido, redes sociales, publicidad, segmentación de audiencias y presencia local en Google.</strong>',
     blocks: [
       { icon: 'thumb_up', tone: 'blue', title: 'Instagram + Facebook', textHtml: '<strong>8 publicaciones mensuales</strong> — planeación, dirección creativa, diseño, edición, copywriting y programación.', items: ['2 Reels', '2 Carruseles', '4 publicaciones gráficas y/o fotográficas'], wide: false },
       { icon: 'auto_stories', tone: 'lime', title: 'Historias', textHtml: '<strong>Hasta 8–10 historias mensuales</strong> para complementar la comunicación y mantener una presencia constante.', items: ['Contenido de sesiones, productos y servicios', 'Promociones e información relevante'], wide: false },
-      { icon: 'photo_camera', tone: 'lavender', title: 'Producción Bimestral', textHtml: '<strong>Sesión cada 2 meses</strong> para generar banco de contenido propio: fotografía, video vertical, dirección creativa y edición.', items: ['Fotografía de marca y producto', 'Video vertical para Reels e Historias'], wide: false },
+      { icon: 'photo_camera', tone: 'lavender', title: 'Producción Bimestral', textHtml: '<strong>Sesión cada 2 meses</strong> para generar banco de contenido propio: fotografía de producto, video vertical, dirección creativa y edición.', items: ['Fotografía de marca y producto', 'Video vertical para Reels e Historias'], wide: false },
       { icon: 'location_on', tone: 'lime', title: 'Google Business Profile', textHtml: 'Apertura, configuración y mantenimiento de la ficha para fortalecer la <strong>visibilidad local en Google y Google Maps.</strong>', items: ['Optimización de información y servicios', 'Publicación del contenido mensual'], wide: false },
       { icon: 'campaign', tone: 'blue', title: 'Meta Ads', textHtml: '<strong>1 campaña mensual en Facebook e Instagram</strong> enfocada en aumentar visibilidad y llegar a nuevas audiencias.', items: ['Estrategia y objetivo de campaña', 'Segmentación de audiencias e intereses', 'Hasta 2 conjuntos de anuncios', 'Copy publicitario y adaptación de contenido', 'Monitoreo y optimización continua', 'Reporte básico de resultados'], wide: true, note: '* La inversión destinada a pauta publicitaria se paga directamente a Meta y no está incluida en la mensualidad.' },
     ],
-    ctaText: 'Una solución integral para construir presencia digital profesional, contar tu historia y llegar a las personas correctas.',
+    ctaText: 'Una solución integral para construir presencia digital profesional, contar tu historia de marca y llegar a las personas correctas.',
     cta: 'Quiero Brand Starter',
     badges: [
       { icon: 'verified', text: 'Sin inversión en publicidad incluida' },
@@ -159,12 +155,15 @@ const es = {
 
   faq: {
     titleHtml: 'Resolviendo <span class="text-accent">Dudas</span>',
-    imageAlt: 'Personaje feliz',
-    // Estas preguntas son las VISIBLES en la página.
+    imageAlt: 'Equipo de Define Creative Studio — estudio de branding y fotografía',
     items: [
+      { q: '¿Cuánto cuesta un branding en San Diego?', a: 'Depende del alcance: no es lo mismo una identidad visual básica que un sistema de marca completo con dirección de arte, fotografía y contenido editorial. Escríbenos y te damos una propuesta clara en menos de 2 horas, sin compromiso.' },
+      { q: '¿Atienden clientes en todo California?', a: 'Sí. Nuestra base está en San Diego y atendemos marcas en todo California, desde Chula Vista y el condado de San Diego hasta Los Ángeles y Orange County. Podemos trabajar en remoto o reunirnos en persona si tu marca está en la región.' },
+      { q: '¿También trabajan con clientes en Tijuana?', a: 'Sí. Por nuestra cercanía y más de 14 años de experiencia en la frontera, trabajamos con clientes específicos en Tijuana. Si tu marca está del lado mexicano, podemos coordinar sesiones de fotografía, producción y reuniones en persona sin problema.' },
       { q: '¿Cuándo veré resultados?', a: 'Las campañas de Ads tienen impacto inmediato, mientras que el SEO es una inversión a medio plazo con resultados exponenciales a partir del tercer mes.' },
       { q: '¿Hay permanencia mínima?', a: 'Cero ataduras. Confiamos tanto en nuestro trabajo que puedes cancelar cuando quieras con un aviso de 30 días.' },
       { q: '¿Trabajan con empresas pequeñas?', a: 'Absolutamente. Nuestro plan Starter está diseñado para negocios en crecimiento que quieren dar el salto digital sin comprometer todo su presupuesto. Escalamos contigo.' },
+      { q: '¿Ofrecen servicios bilingües en español e inglés?', a: 'Sí. Todo nuestro trabajo —branding, fotografía, contenido y web— se produce en español e inglés, para que tu marca conecte con la audiencia de California y de México sin perder coherencia.' },
     ],
   },
 
@@ -179,7 +178,6 @@ const es = {
     extrasPrefix: '+ Extras: ',
     cta: 'Solicitar propuesta',
     footnote: 'Respuesta en menos de 2 horas · Sin compromiso',
-    // Plantilla del mensaje de WhatsApp. {plan} {price} {extras} se reemplazan en JS
     waTemplate: '¡Hola! Me interesa el plan *{plan}* ({price} MXN){extras}. ¿Podemos agendar una asesoría?',
     waExtras: '\n*Extras añadidos:* ',
     currencyLocale: 'es-MX',
@@ -236,13 +234,13 @@ const es = {
   cta: {
     kicker: '¿Listo para crecer?',
     titleHtml: 'Tu competencia no espera.<br>Tú tampoco deberías.',
-    subtitle: 'Agenda una llamada gratuita de 30 minutos. Sin compromiso, con una estrategia clara para tu negocio al terminar.',
+    subtitle: 'Agenda una llamada gratuita de 30 minutos. Sin compromiso, con una estrategia clara de branding, fotografía o web para tu negocio al terminar.',
     primary: 'Agendar llamada gratuita',
     secondary: 'Ver casos de éxito',
   },
 
   footer: {
-    about: 'Empoderando marcas a través de estrategias digitales audaces y diseño centrado en el usuario. Resultados reales, comunicación transparente.',
+    about: 'Estudio creativo de branding, fotografía y diseño web para marcas que quieren destacar. Estrategia, dirección de arte y ejecución con resultados reales y comunicación transparente.',
     company: 'Empresa',
     legal: 'Legal',
     services: 'Servicios',
@@ -251,8 +249,8 @@ const es = {
     terms: 'Términos',
     cookies: 'Cookies',
     rights: 'Todos los derechos reservados.',
-    city: 'Tijuana',
-    country: 'México',
+    city: 'San Diego',
+    country: 'California, EE.UU. · Tijuana, México',
   },
 
   notFound: {
@@ -269,13 +267,13 @@ const es = {
 
   blog: {
     title: 'Blog',
-    metaTitle: 'Blog | Define Creative Studio — Marketing Digital, Branding y Estrategia para Negocios',
-    metaDescription: 'Artículos sobre Google Ads, Meta Ads, branding, CRM, marketing inmobiliario y wedding branding. Todo lo que tu negocio necesita para crecer con estrategia e intención. Define Creative Studio, Tijuana.',
-    keywords: 'blog marketing digital Tijuana, artículos branding, Google Ads para negocios, Meta Ads, agencia marketing digital México, estrategia digital PYME, Define Creative Studio blog, wedding branding, CRM negocios, marketing inmobiliario bilingüe',
+    metaTitle: 'Blog | Branding, Fotografía y Web en San Diego | Define Studio',
+    metaDescription: 'Artículos sobre branding, fotografía de producto, dirección de arte, diseño web y publicidad en Meta y Google para marcas en California y Tijuana. Define Creative Studio.',
+    // keywords eliminado (Google lo ignora)
     schemaName: 'Blog de Define Creative Studio',
     kicker: 'Define Creative Studio · Blog',
     titleHtml: 'Ideas que mueven <span class="text-lime">negocios</span>',
-    intro: 'Estrategia, marketing digital, branding y tecnología. Lo que escribimos aquí es lo que aplicamos todos los días para nuestros clientes.',
+    intro: 'Branding, fotografía, dirección de arte y diseño web. Lo que escribimos aquí es lo que aplicamos todos los días para nuestros clientes.',
     newBadge: 'Nuevo',
     readingTime: 'min de lectura',
     homeCrumb: 'Define Studio',
@@ -285,7 +283,7 @@ const es = {
     cta: {
       kicker: '¿Quieres estos resultados para tu negocio?',
       titleHtml: 'Lo que escribimos aquí,<br>lo hacemos todos los días.',
-      text: 'Desde campañas de Google y Meta Ads hasta branding para bodas. Habla con nuestro equipo y construyamos la estrategia que tu negocio necesita.',
+      text: 'Desde branding y fotografía de producto hasta diseño web y campañas en Meta y Google. Habla con nuestro equipo y construyamos la estrategia que tu marca necesita.',
       primary: 'Hablar con el equipo',
       wa: '¡Hola! Leí el blog y me gustaría saber más sobre sus servicios',
       secondary: 'Conocer Define Studio',
@@ -298,15 +296,13 @@ const en: typeof es = {
   meta: {
     htmlLang: 'en',
     ogLocale: 'en_US',
-    title: 'Define Creative Studio | Branding, Digital Marketing & Photography Agency in Tijuana, Mexico',
+    title: 'Creative Studio in San Diego | Branding & Photography | Define',
     description:
-      'Define Creative Studio: branding, art direction, editorial photography, content, web design and paid media agency in Tijuana. 14+ years building coherent, visually powerful and strategically relevant brands.',
-    ogTitle: 'Define Creative Studio | Branding, Photography & Digital Marketing in Tijuana',
+      'Define Creative Studio: a creative studio in San Diego specializing in branding, art direction, product photography, editorial content and web design. Serving California and Tijuana. 14+ years building coherent, visually powerful brands.',
+    ogTitle: 'Define Creative Studio | Branding, Photography & Web Design in San Diego',
     ogDescription:
-      'We build brands that stand out. Branding, art direction, editorial photography, web design and paid media for ambitious businesses. A creative agency with 14+ years in Tijuana, Mexico.',
-    ogImageAlt: 'Define Creative Studio — Branding & Digital Marketing Agency in Tijuana, Mexico',
-    keywords:
-      'branding agency Tijuana, art direction Tijuana, editorial photography Tijuana, product photography Tijuana, web design Tijuana, paid media Tijuana, Meta Ads, Google Ads, brand identity, creative agency Tijuana, bilingual marketing agency San Diego, Define Creative Studio',
+      'We build brands that stand out. Branding, art direction, editorial photography, web design and paid media for ambitious businesses. A creative studio with 14+ years between San Diego and Tijuana.',
+    ogImageAlt: 'Define Creative Studio — Branding and Photography Studio in San Diego, California',
   },
 
   nav: {
@@ -330,48 +326,49 @@ const en: typeof es = {
 
   hero: {
     titleHtml:
-      'We <span class="text-accent">build</span> brands <br>that stand out and <span class="text-accent">strategies</span> <br>that make them grow.',
+      'Creative <span class="text-accent">branding</span>, photography & bilingual marketing <br>studio in <span class="text-accent">San Diego</span>.',
     subtitle:
-      'Branding, art direction, photography, editorial content, web design and paid media (ADS) to build visually powerful, strategically relevant brands.',
+      'We build brands that stand out and strategies that make them grow: brand identity, product photography, art direction, editorial content, web design, Meta & Google ads, and GoHighLevel CRM. In English and Spanish.',
     videoTitle: 'Define Creative Studio — Showreel',
-    ctaPrimary: 'Get started',
-    ctaSecondary: 'View portfolio',
+    ctaPrimary: 'Get a Quote',
+    ctaSecondary: 'View Portfolio',
   },
 
   services: {
-    eyebrowHtml: 'Our <span class="text-accent">Services</span>',
-    title: 'Strategies that move the needle',
+    eyebrowHtml: 'Our creative <span class="text-accent">Services</span>',
+    title: 'Branding, photography, art direction & web for brands that want to stand out',
     more: 'Learn more',
     items: [
-      { icon: 'palette', tone: 'blue', title: 'Graphic Design & Branding', text: 'We build distinctive brands from their core. From strategy and creative concept to visual identity and brand guidelines, we create coherent systems designed to make every brand recognizable, relevant and memorable.' },
-      { icon: 'draw', tone: 'lime', title: 'Art Direction', text: 'We define the visual universe behind a brand. Through creative concepts, moodboards, styling, campaign direction and visual storytelling, we turn ideas into images and experiences with a clear identity.' },
-      { icon: 'photo_camera', tone: 'lavender', title: 'Product & Brand Photography', text: 'We create intentional, editorial photography fully aligned with each brand’s identity. From product and e-commerce to lifestyle and campaigns, every image is part of a broader visual narrative.' },
-      { icon: 'article', tone: 'blue', title: 'Editorial Content', text: 'We create editorial content that goes beyond filling a feed. From creative concepts and storytelling to social campaigns, visual narratives and branded content, every piece is designed to strengthen identity and build meaningful connections with your audience.' },
-      { icon: 'campaign', tone: 'lime', title: 'Paid Media (ads)', text: 'We turn solid brands into measurable growth. Through strategic Google and Meta campaigns, we connect brands with the right audiences, drive quality traffic and optimize constantly to improve results.' },
-      { icon: 'web', tone: 'lavender', title: 'Web Design', text: 'We design digital experiences where branding, functionality and strategy work together. From landing pages to corporate sites and e-commerce, we build responsive pages designed to connect, communicate and convert.' },
+      { icon: 'palette', tone: 'blue', title: 'Branding & Visual Identity', text: 'Branding agency in San Diego. We build distinctive brands from their essence: strategy, creative concept, visual identity, and brand guidelines. We create coherent systems that make every brand recognizable, relevant, and memorable.' },
+      { icon: 'draw', tone: 'lime', title: 'Art Direction', text: 'Art direction for brands in San Diego. We define the visual universe behind a brand: creative concepts, moodboards, styling, campaign direction, and visual narrative. We transform ideas into images and experiences with a clear identity.' },
+      { icon: 'photo_camera', tone: 'lavender', title: 'Product & Brand Photography', text: 'Product photography in San Diego. We create intentional, editorial photography aligned with each brand\'s identity: product, e-commerce, lifestyle, and campaigns. Every image is part of a broader visual narrative.' },
+      { icon: 'article', tone: 'blue', title: 'Editorial Content', text: 'Editorial content for brands. We create pieces that go beyond filling a feed: creative concepts, storytelling, social campaigns, visual narratives, and brand content designed to strengthen identity and connect with your audience.' },
+      { icon: 'campaign', tone: 'lime', title: 'Paid Media (Meta & Google Ads)', text: 'Meta and Google advertising for businesses. We turn solid brands into measurable growth: strategic campaigns, the right audiences, quality traffic, and constant optimization to improve results.' },
+      { icon: 'web', tone: 'lavender', title: 'Web Design', text: 'Websites in San Diego. We create digital experiences where branding, functionality, and strategy work together: landing pages, corporate sites, and responsive e-commerce designed to connect, communicate, and convert.' },
+      { icon: 'settings', tone: 'blue', title: 'CRM & Automation (GoHighLevel)', text: 'GoHighLevel in San Diego. We implement and manage your CRM so your business automatically follows up with every prospect: pipelines, WhatsApp, email marketing, and reporting. We connect your brand to real sales.' },
     ],
   },
 
   story: {
     kicker: 'Our story',
     titleHtml: 'Why does<br><span class="text-lime">Define Creative Studio</span> exist?',
-    lead: 'With over 14 years of experience on the Tijuana–San Diego border, we know your brand is more than a logo.',
-    tagline: 'Una marca es más que un logo.',
+    lead: 'With over 14 years of experience across the Tijuana-San Diego border, we know your brand is more than a logo.',
+    tagline: 'A brand is more than a logo.',
     points: [
-      'It’s the way it <strong>looks.</strong>',
+      'It\'s the way it <strong>looks.</strong>',
       'The way it <strong>speaks.</strong>',
-      'The way it <strong>is photographed.</strong>',
+      'The way it\'s <strong>photographed.</strong>',
       'The <strong>experience</strong> it creates.',
       'And the way it <strong>reaches the right people.</strong>',
     ],
     closingHtml:
-      'At <strong>Define Creative Studio</strong> we connect strategy, creative direction and execution to build coherent brands at every touchpoint.',
-    imageAlt: 'Define Creative Studio — 14 years of experience in Tijuana and San Diego',
+      'At <strong>Define Creative Studio</strong> we connect <strong>branding</strong>, <strong>art direction</strong>, <strong>photography</strong>, and execution to build coherent brands at every touchpoint.',
+    imageAlt: 'Define creative studio — branding and product photography in Tijuana and San Diego',
   },
 
   portfolio: {
-    titleHtml: 'Success <span class="text-accent">Stories</span>',
-    subtitle: 'Projects that delivered real results for our clients.',
+    titleHtml: 'Case <span class="text-accent">Studies</span>',
+    subtitle: 'Branding, photography, and web design projects that delivered real results for our clients.',
     categories: {
       branding: 'Branding',
       'diseno-grafico': 'Graphic Design',
@@ -390,66 +387,70 @@ const en: typeof es = {
   process: {
     eyebrowHtml: 'How we <span class="text-accent">Work</span>',
     titleHtml: 'Our process, <span class="text-muted">step by step</span>',
-    subtitle: 'From the first meeting to measurable results. No red tape, no endless waiting.',
+    subtitle: 'From the first meeting to measurable results. Branding, photography, and web design without bureaucracy, without endless waits.',
     steps: [
-      { n: '01', tone: 'lime', title: 'Discover', text: 'We understand the brand, its goals, audience and opportunities.' },
-      { n: '02', tone: 'dark', title: 'Define', text: 'We build the strategy, concept and creative direction.' },
-      { n: '03', tone: 'pink', title: 'Create', text: 'We design, produce and develop every touchpoint.' },
-      { n: '04', tone: 'primary', title: 'Launch & Grow', text: 'We launch, measure and evolve the project as the brand grows.' },
+      { n: '01', tone: 'lime', title: 'Discover', text: 'We understand the brand, its goals, audience, and opportunities.' },
+      { n: '02', tone: 'dark', title: 'Define', text: 'We build the strategy, concept, and creative direction.' },
+      { n: '03', tone: 'pink', title: 'Create', text: 'We design, produce, and develop every touchpoint: visual identity, photography, editorial content, and web.' },
+      { n: '04', tone: 'primary', title: 'Launch & Grow', text: 'We launch, measure, and evolve the project as the brand grows.' },
     ],
   },
 
   clients: {
     titleHtml: 'They <span class="text-accent">Trust Us</span>',
-    logoAlt: 'Client logo',
+    logoAlt: 'Define Creative Studio client — branding and photography',
   },
 
   projects: {
     kicker: 'Projects',
     titleHtml: 'Work that <span class="text-lime">speaks</span> for itself.',
-    subtitle: 'Strategy, creativity and execution in every project we touch.',
+    subtitle: 'Strategy, creativity, and execution in every branding, photography, and web project.',
     items: [
-      { tag: 'CRM · Technology', title: 'Ikari CRM', text: 'Smart management for clinics and businesses.' },
+      { tag: 'Branding · Technology', title: 'Ikari CRM', text: 'Visual identity and communication for a smart management platform for clinics and businesses.' },
       { tag: 'Branding · Events', title: 'Pre Save the Date', text: 'Visual identity for weddings with a soul of their own.' },
-      { tag: 'Real Estate · Marketing', title: 'Define Real Estate', text: 'Digital advertising for real estate agents in the US.' },
+      { tag: 'Real Estate · Marketing', title: 'Define Real Estate', text: 'Digital advertising for real estate agents in the U.S.' },
     ],
   },
 
   pricing: {
     kicker: 'Package',
     titleHtml: 'Everything your brand needs,<br><span class="text-accent">in one package.</span>',
-    subtitle: 'No endless contracts. No fine print. Just digital strategy that builds and converts.',
+    subtitle: 'No endless contracts. No fine print. Just branding, content, and digital strategy that builds and converts.',
     badge: 'All-in-one package',
     name: 'Brand Starter',
-    description: 'For brands that want to launch, relaunch or professionalize their digital presence.',
+    description: 'For brands that want to start, reactivate, or professionalize their branding and digital presence.',
     priceLabel: 'Monthly investment',
     price: '$12,500',
     priceNote: '+ VAT · MXN/month',
     introHtml:
-      'It brings together the essentials to build a stronger, more visible brand: <strong>imagery, storytelling, content, social media, advertising, audience targeting and local presence on Google.</strong>',
+      'It brings together the essential elements to build a stronger, more visible brand: <strong>visual identity, storytelling, photography, content, social media, advertising, audience segmentation, and local presence on Google.</strong>',
     blocks: [
-      { icon: 'thumb_up', tone: 'blue', title: 'Instagram + Facebook', textHtml: '<strong>8 monthly posts</strong> — planning, creative direction, design, editing, copywriting and scheduling.', items: ['2 Reels', '2 Carousels', '4 graphic and/or photo posts'], wide: false },
-      { icon: 'auto_stories', tone: 'lime', title: 'Stories', textHtml: '<strong>Up to 8–10 monthly stories</strong> to complement your communication and stay consistently present.', items: ['Content from shoots, products and services', 'Promotions and relevant information'], wide: false },
-      { icon: 'photo_camera', tone: 'lavender', title: 'Bimonthly Production', textHtml: '<strong>A shoot every 2 months</strong> to build your own content bank: photography, vertical video, creative direction and editing.', items: ['Brand and product photography', 'Vertical video for Reels and Stories'], wide: false },
-      { icon: 'location_on', tone: 'lime', title: 'Google Business Profile', textHtml: 'Setup, configuration and upkeep of your listing to strengthen <strong>local visibility on Google and Google Maps.</strong>', items: ['Information and services optimization', 'Monthly content publishing'], wide: false },
-      { icon: 'campaign', tone: 'blue', title: 'Meta Ads', textHtml: '<strong>1 monthly campaign on Facebook and Instagram</strong> focused on increasing visibility and reaching new audiences.', items: ['Campaign strategy and objective', 'Audience and interest targeting', 'Up to 2 ad sets', 'Ad copy and content adaptation', 'Ongoing monitoring and optimization', 'Basic results report'], wide: true, note: '* Ad spend is paid directly to Meta and is not included in the monthly fee.' },
+      { icon: 'thumb_up', tone: 'blue', title: 'Instagram + Facebook', textHtml: '<strong>8 monthly posts</strong> — planning, creative direction, design, editing, copywriting, and scheduling.', items: ['2 Reels', '2 Carousels', '4 graphic and/or photographic posts'], wide: false },
+      { icon: 'auto_stories', tone: 'lime', title: 'Stories', textHtml: '<strong>Up to 8–10 monthly stories</strong> to complement communication and maintain a constant presence.', items: ['Content from sessions, products, and services', 'Promotions and relevant information'], wide: false },
+      { icon: 'photo_camera', tone: 'lavender', title: 'Bimonthly Production', textHtml: '<strong>A session every 2 months</strong> to build your own content bank: product photography, vertical video, creative direction, and editing.', items: ['Brand and product photography', 'Vertical video for Reels and Stories'], wide: false },
+      { icon: 'location_on', tone: 'lime', title: 'Google Business Profile', textHtml: 'Setup, configuration, and maintenance of your profile to strengthen <strong>local visibility on Google and Google Maps.</strong>', items: ['Optimization of information and services', 'Monthly content publishing'], wide: false },
+      { icon: 'campaign', tone: 'blue', title: 'Meta Ads', textHtml: '<strong>1 monthly campaign on Facebook and Instagram</strong> focused on increasing visibility and reaching new audiences.', items: ['Campaign strategy and objective', 'Audience and interest segmentation', 'Up to 2 ad sets', 'Ad copy and content adaptation', 'Continuous monitoring and optimization', 'Basic results report'], wide: true, note: '* Advertising spend is paid directly to Meta and is not included in the monthly fee.' },
     ],
-    ctaText: 'An all-in-one solution to build a professional digital presence, tell your story and reach the right people.',
+    ctaText: 'An all-in-one solution to build a professional digital presence, tell your brand story, and reach the right people.',
     cta: 'I want Brand Starter',
     badges: [
-      { icon: 'verified', text: 'Ad spend not included' },
-      { icon: 'support_agent', text: 'Free consultation before you sign' },
+      { icon: 'verified', text: 'No ad spend included' },
+      { icon: 'support_agent', text: 'Free consultation before hiring' },
       { icon: 'receipt_long', text: 'Tax invoice included' },
     ],
   },
 
   faq: {
     titleHtml: 'Answering <span class="text-accent">Questions</span>',
-    imageAlt: 'Happy character',
+    imageAlt: 'Define Creative Studio team — branding and photography studio',
     items: [
-      { q: 'When will I see results?', a: 'Ad campaigns have an immediate impact, while SEO is a mid-term investment with exponential results from the third month on.' },
-      { q: 'Is there a minimum commitment?', a: 'No strings attached. We trust our work so much that you can cancel anytime with 30 days’ notice.' },
-      { q: 'Do you work with small businesses?', a: 'Absolutely. Our Starter plan is designed for growing businesses that want to go digital without spending their whole budget. We scale with you.' },
+      { q: 'How much does branding cost in San Diego?', a: 'It depends on scope: a basic visual identity is not the same as a complete brand system with art direction, photography, and editorial content. Reach out and we\'ll send you a clear proposal in under 2 hours, no strings attached.' },
+      { q: 'Do you work with clients across California?', a: 'Yes. We are based in San Diego and serve brands across California, from Chula Vista and San Diego County to Los Angeles and Orange County. We can work remotely or meet in person if your brand is in the region.' },
+      { q: 'Do you also work with clients in Tijuana?', a: 'Yes. Thanks to our proximity and over 14 years of experience across the border, we work with select clients in Tijuana. If your brand is on the Mexican side, we can coordinate photo sessions, production, and in-person meetings without any issue.' },
+      { q: 'When will I see results?', a: 'Ad campaigns have immediate impact, while SEO is a mid-term investment with exponential results starting in the third month.' },
+      { q: 'Is there a minimum commitment?', a: 'Zero strings. We trust our work so much that you can cancel anytime with 30 days\' notice.' },
+      { q: 'Do you work with small businesses?', a: 'Absolutely. Our Starter plan is designed for growing businesses that want to make the digital leap without committing their entire budget. We scale with you.' },
+      { q: 'Do you offer bilingual services in English and Spanish?', a: 'Yes. All our work —branding, photography, content, and web— is produced in English and Spanish, so your brand connects with audiences in California and Mexico without losing coherence.' },
     ],
   },
 
@@ -519,14 +520,14 @@ const en: typeof es = {
 
   cta: {
     kicker: 'Ready to grow?',
-    titleHtml: 'Your competition isn’t waiting.<br>Neither should you.',
-    subtitle: 'Book a free 30-minute call. No commitment, and you’ll leave with a clear strategy for your business.',
+    titleHtml: 'Your competition isn\'t waiting.<br>Neither should you.',
+    subtitle: 'Book a free 30-minute call. No commitment, and you\'ll leave with a clear branding, photography, or web strategy for your business.',
     primary: 'Book a free call',
     secondary: 'View success stories',
   },
 
   footer: {
-    about: 'Empowering brands through bold digital strategy and user-centered design. Real results, transparent communication.',
+    about: 'Creative studio for branding, photography, and web design for brands that want to stand out. Strategy, art direction, and execution with real results and transparent communication.',
     company: 'Company',
     legal: 'Legal',
     services: 'Services',
@@ -535,8 +536,8 @@ const en: typeof es = {
     terms: 'Terms',
     cookies: 'Cookies',
     rights: 'All rights reserved.',
-    city: 'Tijuana',
-    country: 'Mexico',
+    city: 'San Diego',
+    country: 'California, USA · Tijuana, Mexico',
   },
 
   notFound: {
@@ -553,13 +554,12 @@ const en: typeof es = {
 
   blog: {
     title: 'Blog',
-    metaTitle: 'Blog | Define Creative Studio — Digital Marketing, Branding & Business Strategy',
-    metaDescription: 'Articles on Google Ads, Meta Ads, branding, CRM, bilingual real estate marketing and wedding branding. Everything your business needs to grow with strategy and intention. Define Creative Studio, Tijuana.',
-    keywords: 'digital marketing blog, branding articles, Google Ads for business, Meta Ads, digital marketing agency Mexico, SMB digital strategy, Define Creative Studio blog, wedding branding, business CRM, bilingual real estate marketing',
+    metaTitle: 'Blog | Branding, Photography & Web in San Diego | Define Studio',
+    metaDescription: 'Articles on branding, product photography, art direction, web design, and Meta and Google advertising for brands in California and Tijuana. Define Creative Studio.',
     schemaName: 'Define Creative Studio Blog',
     kicker: 'Define Creative Studio · Blog',
     titleHtml: 'Ideas that move <span class="text-lime">businesses</span>',
-    intro: 'Strategy, digital marketing, branding and technology. What we write here is what we apply every day for our clients.',
+    intro: 'Branding, photography, art direction, and web design. What we write here is what we apply every day for our clients.',
     newBadge: 'New',
     readingTime: 'min read',
     homeCrumb: 'Define Studio',
@@ -569,7 +569,7 @@ const en: typeof es = {
     cta: {
       kicker: 'Want these results for your business?',
       titleHtml: 'What we write about here,<br>we do every day.',
-      text: 'From Google and Meta Ads campaigns to wedding branding. Talk to our team and let’s build the strategy your business needs.',
+      text: 'From branding and product photography to web design and Meta and Google campaigns. Talk to our team and let\'s build the strategy your brand needs.',
       primary: 'Talk to the team',
       wa: "Hi! I read your blog and I'd like to know more about your services",
       secondary: 'About Define Studio',
