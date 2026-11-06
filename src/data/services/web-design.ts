@@ -9,7 +9,7 @@ const en: ServicePage = {
   seo: {
     title: 'Web Design in San Diego | Brand-Driven Sites | Define',
     description:
-      'Brand-driven web design in San Diego and California. Custom, bilingual websites that look like your brand, load fast, rank on Google and turn visitors into clients. Landing pages from $990.',
+      'Brand-driven web design in San Diego and California. Custom, bilingual websites that look like your brand, load fast, rank on Google and turn visitors into clients. Landing pages from $600.',
    keywords:'web design san diego, brand-driven web design, bilingual web design san diego, small business web design san diego, web design chula vista, web design pricing san diego, website design san diego',
     ogImageAlt: 'Brand-driven web design in San Diego — Define Creative Studio',
     serviceType: 'Brand-driven website design and development',
@@ -101,8 +101,8 @@ const en: ServicePage = {
       {
         name: 'Landing Page',
         for: 'For campaigns, launches and businesses that need a focused, conversion-driven presence fast.',
-        price: '$990',
-        priceValue: 990,
+        price: '$800',
+        priceValue: 800,
         priceCurrency: 'USD',
         note: 'one-time',
         delivery: 'Delivered in 7–10 business days',
@@ -119,8 +119,8 @@ const en: ServicePage = {
       {
         name: 'Brand Website',
         for: 'For businesses that want a complete site that reflects their brand, ranks locally and brings in clients every week.',
-        price: '$2,490',
-        priceValue: 2490,
+        price: '$1,000',
+        priceValue: 1000,
         priceCurrency: 'USD',
         note: 'one-time',
         delivery: 'Delivered in 2–4 weeks',
@@ -139,8 +139,8 @@ const en: ServicePage = {
       {
         name: 'Online Store',
         for: 'For brands ready to sell online with payments, shipping and inventory under their own identity.',
-        price: '$4,900',
-        priceValue: 4900,
+        price: '$2,000',
+        priceValue: 2000,
         priceCurrency: 'USD',
         note: 'one-time',
         delivery: 'Delivered in 4–6 weeks',
@@ -183,7 +183,7 @@ const en: ServicePage = {
   faq: {
     titleHtml: 'Web design in San Diego: <span class="text-accent">frequently asked questions</span>',
     items: [
-      { q: 'How much does web design cost in San Diego?', a: 'Agency websites in San Diego typically run $5,000–$15,000. At Define Creative Studio a landing page starts at $990, a brand website of up to 6 pages at $2,490 and an online store at $4,900. You get agency-level, brand-driven design without the overhead, and we send an exact quote after a free call.' },
+      { q: 'How much does web design cost in San Diego?', a: 'Agency websites in San Diego typically run $5,000–$15,000. At Define Creative Studio a landing page starts at $600, a brand website of up to 6 pages at $1,000 and an online store at $2,000. You get agency-level, brand-driven design without the overhead, and we send an exact quote after a free call.' },
       { q: 'What does "brand-driven" web design mean?', a: 'It means the site is designed from your brand identity — colors, typography, photography, tone and positioning — instead of starting from a template. The result looks unmistakably like your business and builds trust faster.' },
       { q: 'Do you build bilingual websites?', a: 'Yes. We build English and Spanish versions with copy adapted by humans, a language switch on every page and separate SEO for each language. It’s available on any package from +$590.' },
       { q: 'Do you work with businesses in California and Tijuana?', a: 'Yes. We work with businesses in San Diego, Chula Vista, National City, Otay Mesa and all of San Diego County, as well as Los Angeles, Orange County and the rest of California. We also work with select clients in Tijuana and Baja California. Meetings can be in person or over video call.' },
@@ -207,7 +207,7 @@ const es: ServicePage = {
   seo: {
     title: 'Diseño de Páginas Web en San Diego | Bilingües | Define',
     description:
-      'Diseño de páginas web en San Diego y California guiado por tu marca. Sitios bilingües a la medida, rápidos y optimizados para Google, hechos para convertir visitas en clientes. Landing page desde $990 USD.',
+      'Diseño de páginas web en San Diego y California guiado por tu marca. Sitios bilingües a la medida, rápidos y optimizados para Google, hechos para convertir visitas en clientes. Landing page desde $600 USD.',
    keywords:'diseño web san diego, diseño web guiado por marca, diseño web bilingüe san diego, diseño web para pymes san diego, diseño web chula vista, precios diseño web san diego, diseño de sitios web san diego',
     ogImageAlt: 'Diseño de páginas web en San Diego — Define Creative Studio',
     serviceType: 'Diseño y desarrollo de páginas web guiadas por la marca',
@@ -299,8 +299,8 @@ const es: ServicePage = {
       {
         name: 'Landing Page',
         for: 'Para campañas, lanzamientos y negocios que necesitan presencia rápida y enfocada en conversión.',
-        price: '$990',
-        priceValue: 990,
+        price: '$600',
+        priceValue: 600,
         priceCurrency: 'USD',
         note: 'pago único',
         delivery: 'Entrega en 7–10 días hábiles',
@@ -317,8 +317,8 @@ const es: ServicePage = {
       {
         name: 'Sitio de Marca',
         for: 'Para negocios que quieren un sitio completo que refleje su marca, se posicione localmente y traiga clientes cada semana.',
-        price: '$2,490',
-        priceValue: 2490,
+        price: '$1,000',
+        priceValue: 1000,
         priceCurrency: 'USD',
         note: 'pago único',
         delivery: 'Entrega en 2–4 semanas',
@@ -337,8 +337,8 @@ const es: ServicePage = {
       {
         name: 'Tienda en Línea',
         for: 'Para marcas listas para vender en internet con pagos, envíos e inventario con su propia identidad.',
-        price: '$4,900',
-        priceValue: 4900,
+        price: '$2,000',
+        priceValue: 2000,
         priceCurrency: 'USD',
         note: 'pago único',
         delivery: 'Entrega en 4–6 semanas',
@@ -381,7 +381,7 @@ const es: ServicePage = {
   faq: {
     titleHtml: 'Preguntas frecuentes sobre <span class="text-accent">diseño de páginas web</span>',
     items: [
-      { q: '¿Cuánto cuesta una página web en San Diego?', a: 'Un sitio de agencia en San Diego suele costar entre $5,000 y $15,000 USD. En Define Creative Studio una landing page empieza desde $990 USD, un sitio de marca de hasta 6 páginas desde $2,490 USD y una tienda en línea desde $4,900 USD. Tienes diseño de nivel agencia sin sus costos, y te damos una cotización exacta después de una llamada gratuita.' },
+      { q: '¿Cuánto cuesta una página web en San Diego?', a: 'Un sitio de agencia en San Diego suele costar entre $5,000 y $15,000 USD. En Define Creative Studio una landing page empieza desde $600 USD, un sitio de marca de hasta 6 páginas desde $1,000 USD y una tienda en línea desde $2,000 USD. Tienes diseño de nivel agencia sin sus costos, y te damos una cotización exacta después de una llamada gratuita.' },
       { q: '¿Qué significa un diseño web "guiado por tu marca"?', a: 'Que el sitio se diseña desde tu identidad de marca (colores, tipografía, fotografía, tono y posicionamiento) en lugar de partir de una plantilla. El resultado se ve inconfundiblemente como tu negocio y genera confianza más rápido.' },
       { q: '¿Hacen páginas web bilingües?', a: 'Sí. Creamos versiones en español e inglés con textos adaptados por personas, cambio de idioma en cada página y SEO independiente para cada idioma. Está disponible en cualquier paquete desde +$590 USD.' },
       { q: '¿Trabajan con negocios en California y Tijuana?', a: 'Sí. Trabajamos con negocios en San Diego, Chula Vista, National City, Otay Mesa y todo el condado de San Diego, así como en Los Ángeles, Orange County y el resto de California. También atendemos clientes específicos en Tijuana y Baja California. Las reuniones pueden ser en persona o por videollamada.' },
